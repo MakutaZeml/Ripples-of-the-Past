@@ -40,6 +40,7 @@ public class ModPlayerAnimations {
     public static BasicToggleAnim lightFlashDecoy;
     public static BasicToggleAnim atmosphericRift;
     public static BasicToggleAnim pillarmanPossession;
+    public static WindupAttackAnim za_warudo;
 
     /** 
      * This string must match the full name of the class and the package it's in.<br>
@@ -181,6 +182,12 @@ public class ModPlayerAnimations {
         pillarmanPossession = PlayerAnimationHandler.getPlayerAnimator().registerBasicAnimLayer(
                 "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.pillarman.KosmXPillarmanPossessionHandler",
                 new ResourceLocation(JojoMod.MOD_ID, "pillar_man_possession"), 1);
+
+
+        za_warudo = PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.stand_user.KosmXZaWarudo",
+                new ResourceLocation(JojoMod.MOD_ID, "za_warudo"), 1,
+                WindupAttackAnim.NoPlayerAnimator::new);
     }
 
 }
