@@ -53,6 +53,7 @@ import com.github.standobyte.jojo.power.impl.stand.StandUtil;
 import com.github.standobyte.jojo.power.impl.stand.stats.StandStats;
 import com.github.standobyte.jojo.util.general.GeneralUtil;
 import com.github.standobyte.jojo.util.general.MathUtil;
+import com.github.standobyte.jojo.util.mc.CollisionUtil;
 import com.github.standobyte.jojo.util.mc.MCUtil;
 import com.github.standobyte.jojo.util.mc.damage.DamageUtil;
 import com.github.standobyte.jojo.util.mc.damage.IModdedDamageSource;
@@ -201,8 +202,9 @@ public class StandEntity extends LivingEntity implements IStandManifestation, IE
 //    public double motionDist = 0;
 //    public double prevMotionDist = 0;
     
-    public Vector3d prevTiltVec = Vector3d.ZERO;
-    public Vector3d tiltVec = Vector3d.ZERO;
+    public List<Vector3d> tiltVecQueue = new ArrayList<>();
+//    public Vector3d prevTiltVec = Vector3d.ZERO;
+//    public Vector3d tiltVec = Vector3d.ZERO;
     public boolean refreshGlowing = false;
     
     public static final DataParameter<Optional<ResourceLocation>> DATA_PARAM_STAND_SKIN = EntityDataManager.defineId(StandEntity.class, 
@@ -1108,8 +1110,11 @@ public class StandEntity extends LivingEntity implements IStandManifestation, IE
             return false;
         }
         if (this.is(damageSrc.getEntity())
-                || getUser() != null && getUser().is(damageSrc.getEntity())
-                || getUser() instanceof PlayerEntity && ((PlayerEntity) getUser()).abilities.invulnerable && !damageSrc.isBypassInvul()
+                || getUser() != null && getUser().is(damageSrc.getEntity())) {
+            return !(damageSrc instanceof IStandDamageSource && ((IStandDamageSource) damageSrc).standCanHitSelf());
+        }
+        if (
+                getUser() instanceof PlayerEntity && ((PlayerEntity) getUser()).abilities.invulnerable && !damageSrc.isBypassInvul()
                 || damageSrc.isFire() && !level.getGameRules().getBoolean(GameRules.RULE_FIRE_DAMAGE)) {
             return true;
         }
@@ -1366,7 +1371,7 @@ public class StandEntity extends LivingEntity implements IStandManifestation, IE
                     collisionBox.maxY, 
                     collisionBox.maxZ);
         }
-        return position().add(MCUtil.collide(this, collisionBox, pos.subtract(position())));
+        return position().add(CollisionUtil.collide(this, collisionBox, pos.subtract(position())));
     }
     
     
@@ -1830,6 +1835,10 @@ public class StandEntity extends LivingEntity implements IStandManifestation, IE
         boolean attacked = doAttack.get();
         if (attacked && !isManuallyControlled()) {
             setLastHurtMob(punch.target);
+            LivingEntity user = getUser();
+            if (user != null) {
+                user.setLastHurtMob(punch.target);
+            }
         }
         return attacked;
     }
@@ -2364,6 +2373,11 @@ public class StandEntity extends LivingEntity implements IStandManifestation, IE
 
     @Override
     public boolean isPushable() {
+        return false;
+    }
+    
+    @Override
+    public boolean isPushedByFluid() {
         return false;
     }
     

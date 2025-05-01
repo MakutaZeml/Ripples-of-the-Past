@@ -6,6 +6,7 @@ import com.github.standobyte.jojo.JojoModConfig;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.init.ModStatusEffects;
 import com.github.standobyte.jojo.init.power.non_stand.ModPowers;
+import com.github.standobyte.jojo.init.power.stand.ModStandEffects;
 import com.github.standobyte.jojo.network.PacketManager;
 import com.github.standobyte.jojo.network.packets.fromserver.MaxAchievedResolvePacket;
 import com.github.standobyte.jojo.network.packets.fromserver.ResolveBoostsPacket;
@@ -105,8 +106,8 @@ public class ResolveCounter {
                 if (effectLevel < 0) {
                     effectLevel = 255;
                 }
-                resolve = Math.max(resolve - getMaxResolveValue() / 
-                        (float) RESOLVE_EFFECT_MIN[Math.min(effectLevel, RESOLVE_EFFECT_MIN.length)], 0);
+                effectLevel = Math.min(effectLevel, RESOLVE_EFFECT_MIN.length - 1);
+                resolve = Math.max(resolve - getMaxResolveValue() / (float) RESOLVE_EFFECT_MIN[effectLevel], 0);
                 if (!user.level.isClientSide() && resolve == 0) {
                     user.removeEffect(ModStatusEffects.RESOLVE.get());
                 }
@@ -508,7 +509,13 @@ public class ResolveCounter {
         }
         
         else if (dmgSource.getEntity() instanceof LivingEntity) {
-            IStandPower.getStandPowerOptional(StandUtil.getStandUser((LivingEntity) dmgSource.getEntity())).ifPresent(attackerStand -> {
+            LivingEntity attacker = (LivingEntity) dmgSource.getEntity();
+            StandEffectsTracker.getEffectsTargetedBy(attacker, ModStandEffects.GE_CREATED_LIFEFORM.get()).findAny().ifPresent(geLifeform -> {
+                IStandPower geUserPower = geLifeform.getUserPower();
+                addResolve(geUserPower, target, points * 1.25F);
+            });
+            
+            IStandPower.getStandPowerOptional(StandUtil.getStandUser(attacker)).ifPresent(attackerStand -> {
                 if (attackerStand.isActive()) {
                     addResolve(attackerStand, target, points * 0.5F);
                 }

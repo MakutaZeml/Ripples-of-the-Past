@@ -24,6 +24,7 @@ import com.github.standobyte.jojo.action.stand.CrazyDiamondRestoreTerrain;
 import com.github.standobyte.jojo.client.ClientUtil;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.item.GlovesItem;
+import com.github.standobyte.jojo.mrpresident.CocoJumboTurtleEntity;
 import com.github.standobyte.jojo.network.NetworkUtil;
 import com.github.standobyte.jojo.network.PacketManager;
 import com.github.standobyte.jojo.network.packets.fromserver.LotsOfBlocksBrokenPacket;
@@ -46,6 +47,7 @@ import com.mojang.datafixers.util.Pair;
 
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.block.AbstractFireBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -58,16 +60,23 @@ import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.crash.ReportedException;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityPredicate;
+import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.Attribute;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
 import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
+import net.minecraft.entity.ai.goal.Goal;
+import net.minecraft.entity.ai.goal.NearestAttackableTargetGoal;
+import net.minecraft.entity.ai.goal.PrioritizedGoal;
 import net.minecraft.entity.item.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.entity.projectile.PotionEntity;
+import net.minecraft.entity.projectile.ProjectileItemEntity;
 import net.minecraft.fluid.FluidState;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.inventory.IInventory;
@@ -107,8 +116,8 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.EntityPredicates;
 import net.minecraft.util.Hand;
 import net.minecraft.util.HandSide;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.ReuseableStream;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -117,15 +126,13 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.EntityRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.shapes.IBooleanFunction;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.util.math.vector.Vector3d;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.GameType;
+import net.minecraft.world.IServerWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ChunkManager;
 import net.minecraft.world.server.ServerWorld;
@@ -234,12 +241,7 @@ public class MCUtil {
     public static <T extends IForgeRegistryEntry<T>> Optional<T> nbtGetRegistryEntry(CompoundNBT nbt, String key, IForgeRegistry<T> registry) {
         if (nbt.contains(key, getNbtId(StringNBT.class))) {
             String idString = nbt.getString(key);
-            if (!idString.isEmpty()) {
-                ResourceLocation id = new ResourceLocation(idString);
-                if (registry.containsKey(id)) {
-                    return Optional.of(registry.getValue(id));
-                }
-            }
+            return registryEntryFromId(idString, registry);
         }
         
         return Optional.empty();
@@ -249,6 +251,35 @@ public class MCUtil {
         if (nbt.contains(key, getNbtId(CompoundNBT.class))) {
             return Optional.of(nbt.getCompound(key));
         }
+        return Optional.empty();
+    }
+    
+    public static CompoundNBT nbtGetOrCreateCompound(CompoundNBT nbt, String key) {
+        if (nbt.contains(key, getNbtId(CompoundNBT.class))) {
+            return nbt.getCompound(key);
+        }
+        CompoundNBT element = new CompoundNBT();
+        nbt.put(key, element);
+        return element;
+    }
+    
+    public static Optional<ListNBT> nbtGetList(CompoundNBT nbt, String key, Class<? extends INBT> nbtClass) {
+        if (nbt.contains(key, getNbtId(ListNBT.class))) {
+            return Optional.of(nbt.getList(key, getNbtId(nbtClass)));
+        }
+        return Optional.empty();
+    }
+    
+    
+    
+    public static <T extends IForgeRegistryEntry<T>> Optional<T> registryEntryFromId(String idString, IForgeRegistry<T> registry) {
+        if (!idString.isEmpty()) {
+            ResourceLocation id = new ResourceLocation(idString);
+            if (registry.containsKey(id)) {
+                return Optional.of(registry.getValue(id));
+            }
+        }
+        
         return Optional.empty();
     }
     
@@ -492,36 +523,21 @@ public class MCUtil {
     
 
     
-    public static Vector3d collide(Entity entity, Vector3d offsetVec) {
-        return collide(entity, entity.getBoundingBox(), offsetVec);
+    public static Optional<Entity> cloneEntity(Entity entity) {
+        CompoundNBT entityNbt = entity.serializeNBT();
+        return EntityType.create(entityNbt, entity.level);
     }
     
+    
+    
+    @Deprecated
+    public static Vector3d collide(Entity entity, Vector3d offsetVec) {
+        return CollisionUtil.collide(entity, offsetVec);
+    }
+    
+    @Deprecated
     public static Vector3d collide(Entity entity, AxisAlignedBB collisionBox, Vector3d offsetVec) {
-        ISelectionContext selectionContext = ISelectionContext.of(entity);
-        VoxelShape worldBorder = entity.level.getWorldBorder().getCollisionShape();
-        Stream<VoxelShape> worldBorderCollision = VoxelShapes.joinIsNotEmpty(worldBorder, VoxelShapes.create(collisionBox.deflate(1.0E-7D)), IBooleanFunction.AND) ? Stream.empty() : Stream.of(worldBorder);
-        Stream<VoxelShape> entityCollisions = entity.level.getEntityCollisions(entity, collisionBox.expandTowards(offsetVec), e -> true);
-        ReuseableStream<VoxelShape> collisions = new ReuseableStream<>(Stream.concat(entityCollisions, worldBorderCollision));
-        Vector3d vector3d = offsetVec.lengthSqr() == 0 ? offsetVec : Entity.collideBoundingBoxHeuristically(entity, offsetVec, collisionBox, entity.level, selectionContext, collisions);
-        boolean flag = offsetVec.x != vector3d.x;
-        boolean flag2 = offsetVec.z != vector3d.z;
-        boolean flag3 = entity.isOnGround() || offsetVec.y != vector3d.y && offsetVec.y < 0.0D;
-        if (entity.maxUpStep > 0.0F && flag3 && (flag || flag2)) {
-            Vector3d vector3d1 = Entity.collideBoundingBoxHeuristically(entity, new Vector3d(offsetVec.x, entity.maxUpStep, offsetVec.z), collisionBox, entity.level, selectionContext, collisions);
-            Vector3d vector3d2 = Entity.collideBoundingBoxHeuristically(entity, new Vector3d(0, entity.maxUpStep, 0), collisionBox.expandTowards(offsetVec.x, 0.0D, offsetVec.z), entity.level, selectionContext, collisions);
-            if (vector3d2.y < entity.maxUpStep) {
-                Vector3d vector3d3 = Entity.collideBoundingBoxHeuristically(entity, new Vector3d(offsetVec.x, 0.0D, offsetVec.z), collisionBox.move(vector3d2), entity.level, selectionContext, collisions).add(vector3d2);
-                if (Entity.getHorizontalDistanceSqr(vector3d3) > Entity.getHorizontalDistanceSqr(vector3d1)) {
-                    vector3d1 = vector3d3;
-                }
-            }
-            
-            if (Entity.getHorizontalDistanceSqr(vector3d1) > Entity.getHorizontalDistanceSqr(vector3d)) {
-                return vector3d1.add(Entity.collideBoundingBoxHeuristically(entity, new Vector3d(0.0D, -vector3d1.y + offsetVec.y, 0.0D), collisionBox.move(vector3d1), entity.level, selectionContext, collisions));
-            }
-        }
-        
-        return vector3d;
+        return CollisionUtil.collide(entity, collisionBox, offsetVec);
     }
 
     public static void rotateTowards(Entity entity, Vector3d targetPos, float maxAngle) {
@@ -550,6 +566,64 @@ public class MCUtil {
     
     public static Vector3d getEntityPosition(Entity entity, float partialTick) {
         return partialTick == 1.0F ? entity.position() : entity.getPosition(partialTick);
+    }
+    
+    
+    public static boolean hasIndirectPassenger(Entity vehicle, Entity passenger) {
+        for (Entity entity : vehicle.getPassengers()) {
+            if (entity.equals(passenger)) {
+                return true;
+            }
+            
+            if (entity.hasIndirectPassenger(passenger)) {
+                return true;
+            }
+        }
+        
+        return false;
+    }
+    
+    
+    public static void trySpawnMob(IServerWorld world, EntityType<?> type, SpawnReason spawnReason, Random random) {
+//        boolean spawned = false;
+//
+//        for (int tryNum = 0; !spawned && tryNum < 4; ++tryNum) {
+//            BlockPos blockPos = WorldEntitySpawner.getTopNonCollidingPos(world, type, l, i1);
+//            if (type.canSummon() && WorldEntitySpawner.isSpawnPositionOk(EntitySpawnPlacementRegistry.getPlacementType(type), world, blockPos, type)) {
+//                float width = type.getWidth();
+//                double x = MathHelper.clamp((double)l, (double)i + (double)width, (double)i + 16.0D - (double)width);
+//                double z = MathHelper.clamp((double)i1, (double)j + (double)width, (double)j + 16.0D - (double)width);
+//                if (!world.noCollision(type.getAABB(x, (double)blockPos.getY(), z)) || !EntitySpawnPlacementRegistry.checkSpawnRules(
+//                        type, world, spawnReason, new BlockPos(x, (double)blockPos.getY(), z), world.getRandom())) {
+//                    continue;
+//                }
+//
+//                Entity entity;
+//                try {
+//                    entity = type.create(world.getLevel());
+//                } catch (Exception exception) {
+//                    JojoMod.getLogger().warn("Failed to create mob", (Throwable)exception);
+//                    continue;
+//                }
+//
+//                entity.moveTo(x, (double)blockPos.getY(), z, random.nextFloat() * 360.0F, 0.0F);
+//                if (entity instanceof MobEntity) {
+//                    MobEntity mobentity = (MobEntity)entity;
+//                    if (ForgeHooks.canEntitySpawn(mobentity, world, x, blockPos.getY(), z, null, spawnReason) == -1) continue;
+//                    if (mobentity.checkSpawnRules(world, spawnReason) && mobentity.checkSpawnObstruction(world)) {
+//                        entityData = mobentity.finalizeSpawn(world, world.getCurrentDifficultyAt(mobentity.blockPosition()), spawnReason, entityData, (CompoundNBT)null);
+//                        world.addFreshEntityWithPassengers(mobentity);
+//                        spawned = true;
+//                    }
+//                }
+//            }
+//
+//            l += random.nextInt(5) - random.nextInt(5);
+//
+//            for(i1 += random.nextInt(5) - random.nextInt(5); l < i || l >= i + 16 || i1 < j || i1 >= j + 16; i1 = k1 + random.nextInt(5) - random.nextInt(5)) {
+//                l = j1 + random.nextInt(5) - random.nextInt(5);
+//            }
+//        }
     }
     
     
@@ -830,6 +904,17 @@ public class MCUtil {
         return false;
     }
     
+    public static void multipliedAttrModifier(LivingEntity entity, Attribute attribute, AttributeModifier modifier, float mult) {
+        ModifiableAttributeInstance attributeInstance = entity.getAttribute(attribute);
+        if (attributeInstance != null) {
+            attributeInstance.removeModifier(modifier);
+            if (mult != 0) {
+                attributeInstance.addTransientModifier(new AttributeModifier(modifier.getId(), 
+                        modifier.getName() + " " + mult, modifier.getAmount() * mult, modifier.getOperation()));
+            }
+        }
+    }
+    
     public static double calcValueWithoutModifiers(ModifiableAttributeInstance entityAttribute, UUID... modifierIds) {
         return calcValueWithoutModifiers(entityAttribute, Arrays.stream(modifierIds));
     }
@@ -895,6 +980,11 @@ public class MCUtil {
         return false;
     }
     
+    public static int getEffectLevel(LivingEntity entity, Effect effect) {
+        EffectInstance effInstance = entity.getEffect(effect);
+        return effInstance != null ? effInstance.getAmplifier() : -1;
+    }
+
     public static boolean reduceEffect(LivingEntity entity, Effect effect, int reduceDuration, int reduceAmplifier) {
         EffectInstance mainEffectInstance = entity.getEffect(effect);
         if (mainEffectInstance == null) {
@@ -988,6 +1078,16 @@ public class MCUtil {
     
 
     
+    public static boolean hasAdvancement(ServerPlayerEntity player, ResourceLocation advancementPath) {
+        Advancement advancement = player.server.getAdvancements().getAdvancement(advancementPath);
+        if (advancement != null) {
+            return player.getAdvancements().getOrStartProgress(advancement).isDone();
+        }
+        return false;
+    }
+    
+    
+    
     public static boolean isHandFree(LivingEntity entity, Hand hand) {
         return areHandsFree(entity, hand);
     }
@@ -1001,7 +1101,8 @@ public class MCUtil {
             return false;
         }
         for (Hand hand : hands) {
-            if (!itemHandFree(entity.getItemInHand(hand))) {
+            if (!itemHandFree(entity.getItemInHand(hand))
+                    || hand == Hand.OFF_HAND && entity.getPassengers().stream().anyMatch(passenger -> CocoJumboTurtleEntity.isCarriedTurtle(passenger, entity))) {
                 return false;
             }
         }
@@ -1040,6 +1141,29 @@ public class MCUtil {
         }
     }
     
+    public static void makeMobNeutralTo(MobEntity mob, LivingEntity neutralTo) {
+        Class<? extends LivingEntity> clazz = neutralTo.getClass();
+        UUID userUuid = neutralTo.getUUID();
+        Set<PrioritizedGoal> goals = CommonReflection.getGoalsSet(mob.targetSelector);
+        for (PrioritizedGoal prGoal : goals) {
+            Goal goal = prGoal.getGoal();
+            if (goal instanceof NearestAttackableTargetGoal) {
+                NearestAttackableTargetGoal<?> targetGoal = (NearestAttackableTargetGoal<?>) goal;
+                Class<? extends LivingEntity> targetClass = CommonReflection.getTargetClass(targetGoal);
+                
+                if (targetClass == null || targetClass.isAssignableFrom(clazz)) {
+                    EntityPredicate selector = CommonReflection.getTargetConditions(targetGoal);
+                    if (selector != null) {
+                        Predicate<LivingEntity> oldPredicate = CommonReflection.getTargetSelector(selector);
+                        Predicate<LivingEntity> geUserPredicate = target -> !userUuid.equals(target.getUUID());
+                        CommonReflection.setTargetConditions(targetGoal, new EntityPredicate().range(CommonReflection.getTargetDistance(targetGoal)).selector(
+                                oldPredicate != null ? oldPredicate.and(geUserPredicate) : geUserPredicate));
+                    }
+                }
+            }
+        }
+    }
+    
     
     
     public static void onLivingResurrect(LivingEntity entity) {
@@ -1061,6 +1185,11 @@ public class MCUtil {
     public static boolean isPotionWaterBottle(PotionEntity entity) {
         ItemStack potionItem = entity.getItem();
         return PotionUtils.getPotion(potionItem) == Potions.WATER && PotionUtils.getMobEffects(potionItem).isEmpty();
+    }
+    
+    public static ItemStack getItemOnServer(ProjectileItemEntity entity) {
+        ItemStack item = CommonReflection.getItemRaw(entity);
+        return item.isEmpty() ? new ItemStack(CommonReflection.getDefaultItem(entity)) : item;
     }
     
     
@@ -1087,32 +1216,43 @@ public class MCUtil {
     }
     
     
+    @Nullable
+    public static <T> RegistryKey<T> getRegistryKeyIfPresent(RegistryKey<? extends Registry<T>> parent, ResourceLocation location) {
+        String s = (parent.location() + ":" + location).intern();
+        return (RegistryKey<T>) CommonReflection.registryKeyValues().get(s);
+    }
+    
+    
+    
     public static class EntityEvents { // TODO entity event constants
-        public static final int HURT                           = 2;
-        public static final int SILVERFISH_SPAWN_PARTICLES     = 20;
-        public static final int PLAYER_PERM_LEVEL_0            = 24;
-        public static final int PLAYER_PERM_LEVEL_1            = 25;
-        public static final int PLAYER_PERM_LEVEL_2            = 26;
-        public static final int PLAYER_PERM_LEVEL_3            = 27;
-        public static final int PLAYER_PERM_LEVEL_4            = 28;
-        public static final int SHIELD_BLOCK_SOUND             = 29;
-        public static final int SHIELD_BREAK_SOUND             = 30;
-        public static final int ARMOR_STAND_HIT                = 32;
-        public static final int HURT_THORNS                    = 33;
-        public static final int HURT_DROWN                     = 36;
-        public static final int HURT_ON_FIRE                   = 37;
-        public static final int HURT_SWEET_BERRY_BUSH          = 44;
-        public static final int BREAK_MAIN_HAND_ITEM           = 47;
-        public static final int BREAK_OFF_HAND_ITEM            = 48;
-        public static final int BREAK_HEAD_ITEM                = 49;
-        public static final int BREAK_CHEST_ITEM               = 50;
-        public static final int BREAK_LEGS_ITEM                = 51;
-        public static final int BREAK_FEET_ITEM                = 52;
-        public static final int HONEY_SLIDE_PARTICLES          = 53;
-        public static final int HONEY_JUMP_PARTICLES           = 54;
-        public static final int SWAP_HAND_ITEMS                = 55;
+        public static final byte HURT                           = 2;
+        public static final byte VILLAGER_BREEDING              = 12;
+        public static final byte VILLAGER_ANGRY                 = 13;
+        public static final byte VILLAGER_HAPPY                 = 14;
+        public static final byte VILLAGER_PANIC_SWEAT           = 42;
+        public static final byte SILVERFISH_SPAWN_PARTICLES     = 20;
+        public static final byte PLAYER_PERM_LEVEL_0            = 24;
+        public static final byte PLAYER_PERM_LEVEL_1            = 25;
+        public static final byte PLAYER_PERM_LEVEL_2            = 26;
+        public static final byte PLAYER_PERM_LEVEL_3            = 27;
+        public static final byte PLAYER_PERM_LEVEL_4            = 28;
+        public static final byte SHIELD_BLOCK_SOUND             = 29;
+        public static final byte SHIELD_BREAK_SOUND             = 30;
+        public static final byte ARMOR_STAND_HIT                = 32;
+        public static final byte HURT_THORNS                    = 33;
+        public static final byte HURT_DROWN                     = 36;
+        public static final byte HURT_ON_FIRE                   = 37;
+        public static final byte HURT_SWEET_BERRY_BUSH          = 44;
+        public static final byte BREAK_MAIN_HAND_ITEM           = 47;
+        public static final byte BREAK_OFF_HAND_ITEM            = 48;
+        public static final byte BREAK_HEAD_ITEM                = 49;
+        public static final byte BREAK_CHEST_ITEM               = 50;
+        public static final byte BREAK_LEGS_ITEM                = 51;
+        public static final byte BREAK_FEET_ITEM                = 52;
+        public static final byte HONEY_SLIDE_PARTICLES          = 53;
+        public static final byte HONEY_JUMP_PARTICLES           = 54;
+        public static final byte SWAP_HAND_ITEMS                = 55;
         /*
-         * VillagerEntity
          * AnimalEntity
          * AsbtractHorseEntity
          * FoxEntity
