@@ -76,6 +76,8 @@ public class TimeStop extends StandAction {
         this.timeResumeSound = builder.timeResumeSound;
         this.shaderWithAnim = builder.shaderWithAnim;
         this.shaderOld = builder.shaderOld;
+        
+        voiceLineDelay = 0;
     }
     
     @Override
@@ -102,6 +104,13 @@ public class TimeStop extends StandAction {
             return voiceLineWithStandSummoned.get();
         }
         return super.getShout(user, power, target, wasActive);
+    }
+    
+    @Override
+    public void startedHolding(World world, LivingEntity user, IStandPower power, ActionTarget target, boolean requirementsFulfilled) {
+        if (!world.isClientSide() && requirementsFulfilled && power.getStandManifestation() instanceof StandEntity) {
+            ((StandEntity) power.getStandManifestation()).stopTask();
+        }
     }
 
     @Override
@@ -145,6 +154,10 @@ public class TimeStop extends StandAction {
             }
             
             user.getCapability(LivingUtilCapProvider.CAPABILITY).ifPresent(cap -> cap.hasUsedTimeStopToday = true);
+        }
+        else if (power != null && power.getStandManifestation() instanceof StandEntity) {
+            StandEntity standEntity = (StandEntity) power.getStandManifestation();
+            standEntity.setStandPose(ANIM);
         }
     }
 
