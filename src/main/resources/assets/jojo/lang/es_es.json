@@ -83,7 +83,7 @@
   "item.jojo.stand_full_clear": "Borrador Stand completo",
   "item.jojo.stand_full_clear_one_time": "Borrador Stand completo (una vez)",
   "item.jojo.stand_full_clear.hint": "También borra todas las habilidades de Stand aprendidas y la penalización de costo de XP de Flecha.",
-  "item.jojo.creative_only_tooltip" : "Artículo solo creativo",
+  "item.jojo.creative_only_tooltip": "Artículo solo creativo",
   "item.jojo.cocoa_gum": "Goma de cacao",
   "item.jojo.walkman": "Walkman",
   "item.jojo.walkman.reference_quote": "\"¡Mi propio nieto ni siquiera conoce mi cara! ¡Nunca perdonaré a los japoneses! Pero... me gusta mi Walkman.\"",
@@ -130,7 +130,6 @@
   "item.jojo.mista_revolver.reference_quote": "\"Si no respondes en 2 segundos de que te pregunte, te meteré una bala en ambas cuencas de los ojos... Uno, due... No esperaré más.\"",
   "item.jojo.lighter": "Encendedor",
   "item.jojo.lighter.reference_quote": "\"Esta prueba evaluará tu confiabilidad... ¡a través de la llama de este encendedor!\"",
-  "item.jojo.mr_president_key": "Llave de tortuga",
   "item.jojo.stone_pendant": "Colgante de piedra",
   "item.jojo.stone_pendant.reference_quote": "\"Me han informado de que tu padre divorciado le dijo a tu madre que te lo diera si estabas en problemas.\"",
   "item.jojo.harpoon": "Arpón",
@@ -140,11 +139,17 @@
   "filled_map.jojo:meteorite": "Mapa del Explorador de Tundra",
   "filled_map.jojo:hamon_temple": "Mapa de Explorador de Montaña",
   "filled_map.jojo:pillarman_temple": "Mapa del Explorador de la Selva",
-  
+
   "jojo.stand_user_crafting.jei_hint.single": "Esto solo se puede crear si tu Stand es %s",
   "jojo.stand_user_crafting.jei_hint.multiple": "Esto solo se puede crear si tu Stand es uno de estos:",
   "jojo.stand_user_crafting.jei_hint.error": "Identificación(es) de stand faltantes:",
-  
+
+  "jojo.player_anim_reminder.1": "Ripples of the Past uses two third-party mods to be able to add player animations.",
+  "jojo.player_anim_reminder.2": "The following mods were not found in the mod list:",
+  "jojo.player_anim_reminder.cf_link": "[CurseForge link]",
+  "jojo.player_anim_reminder.3": "They are client-side, you do not have to install them on a server.",
+  "jojo.player_anim_reminder.4": "The game will run without them, just don't forget to install them next time you launch the game!",
+
   "walkman.button.play": "Reproducir %s",
   "walkman.button.flip": "Voltear (reproducir %s)",
   "walkman.button.rewind": "Rebobinar (reproducir %s)",
@@ -155,7 +160,7 @@
   "walkman.button.playback_mode.default": "Bucle: deshabilitado",
   "walkman.button.playback_mode.loop": "Bucle: habilitado",
   "walkman.volume": "Volumen",
-  
+
   "entity.jojo.hungry_zombie": "Esbirro zombi",
   "entity.jojo.hamon_master": "Maestro Hamon",
   "entity.jojo.blade_hat": "Sombrero de cuchilla",
@@ -182,7 +187,8 @@
   "entity.jojo.stand_arrow": "Flecha",
   "entity.jojo.block_shard": "Fragmento de bloque",
   "entity.jojo.soul": "Alma",
-  
+  "entity.jojo.angelo_rock": "Rock",
+
   "effect.jojo.freeze": "Congelar",
   "item.minecraft.potion.effect.freeze": "Poción de congelación",
   "item.minecraft.potion.effect.long_freeze": "Poción de congelación",
@@ -217,7 +223,8 @@
   "effect.jojo.misshapen_face": "Cara deforme",
   "effect.jojo.misshapen_arms": "Brazos deformes",
   "effect.jojo.misshapen_legs": "Piernas deformes",
-  
+  "effect.jojo.sensory_overload": "Sensory Overload",
+
   "advancements.jojo.root.title": "JoJo",
   "advancements.jojo.root.description": "El comienzo de una extraña aventura... (Consulta la pestaña de avances de JoJo)",
   "advancements.jojo.buy_map.title": "Ondas de aventura",
@@ -229,7 +236,7 @@
   "advancements.jojo.hamon_kill_vampire.title": "¡Tenías que ser destruido!",
   "advancements.jojo.hamon_kill_vampire.description": "Destruye a un vampiro usando Hamon",
   "advancements.jojo.hamon_mastery.title": "¡El viento ha creado un vikingo!",
-  "advancements.jojo.hamon_mastery.description": "Alcanza los niveles máximos de fuerza y ​​control de Hamon",
+  "advancements.jojo.hamon_mastery.description": "Alcanza los niveles máximos de fuerza y \u200B\u200Bcontrol de Hamon",
   "advancements.jojo.hamon_max_training.title": "Sólo 1 de cada 10000 tiene la aptitud y la fuerza de voluntad",
   "advancements.jojo.hamon_max_training.description": "Get to the maximum level of breathing training",
   "advancements.jojo.last_hamon.title": "¡Es mi último Hamon!",
@@ -290,7 +297,7 @@
   "advancements.jojo.pillarman_evolve.description": "Usa una máscara de piedra para liberar tu potencial",
   "advancements.jojo.pillarman_evolve_aja.title": "Más... ¡Necesito más poder!",
   "advancements.jojo.pillarman_evolve_aja.description": "Combina una Máscara de Piedra con una Piedra Roja Aja y úsala",
-  "_advancements.jojo.mask_suicide.title": "Primitive Human...",
+  "advancements.jojo.mask_suicide.title": "Primitive Human...",
   "advancements.jojo.mask_suicide.description": "Usa una Máscara de Piedra con Piedra Roja Aja mientras no seas un Hombre Pilar",
   "advancements.jojo.kill_pillarman.title": "¡Muere con el poder que robaste!",
   "advancements.jojo.kill_pillarman.description": "Destruye a uno de los Hombres del Pilar más poderosos",
@@ -306,7 +313,7 @@
   "advancements.jojo.pillarman_light_mode.description": "Consigue el modo Batalla Ligera",
   "advancements.jojo.pillarman_kill_pillarman.title": "¡Es peligroso dejarlo vivir!",
   "advancements.jojo.pillarman_kill_pillarman.description": "Como Hombre del Pilar, mata a otro Hombre del Pilar que haya usado una Máscara de Piedra.",
-  
+
   "jojo.subtitle.stone_mask_activation_entity": "Stone Mask activates",
   "jojo.subtitle.stone_mask_activation": "Máscara de piedra reacciona",
   "jojo.subtitle.stone_mask_deactivation": "La máscara de piedra se desactiva",
@@ -319,6 +326,7 @@
   "jojo.subtitle.blade_hat_spinning": "El sombrero de cuchilla gira",
   "jojo.subtitle.blade_hat_entity_hit": "La espada alcanza un hueso",
   "jojo.subtitle.pillar_man_awakening": "El hombre del pilar despertó",
+  "jojo.subtitle.devouring": "Flesh devoured",
   "jojo.subtitle.hamon_sparks": "Hamon chispea",
   "jojo.subtitle.hamon_concentration": "Hamon cargado",
   "jojo.subtitle.hamon_healing": "Curación Hamon",
@@ -334,7 +342,9 @@
   "jojo.subtitle.knife_hit": "Golpes de cuchillo",
   "jojo.subtitle.liquid_splash": "Salpicaduras de líquido",
   "jojo.subtitle.shot": "Algo se disparó",
-  
+  "jojo.subtitle.pillar_man_regen": "Wound healed",
+  "jojo.subtitle.attack_evasion": "Attack evaded",
+
   "jojo.subtitle.hamon_breath": "El jugador respira pesadamente",
   "jojo.subtitle.turqouise_blue_overdrive": "\"¡Sobremarcha azul turquesa!\"",
   "jojo.subtitle.sunlight_yellow_overdrive": "\"¡Sobremarcha de color amarillo luz solar!\"",
@@ -383,7 +393,7 @@
   "jojo.subtitle.aja_stone": "\"¡Aja Piedra!\"",
   "jojo.subtitle.super_aja": "\"¡¡¡Súper Aja!!!\"",
   "jojo.subtitle.snake_muffler": "\"¡Silenciador de serpiente!\"",
-  
+
   "death.attack.bloodDrain": "%s's blood was sucked dry by %s",
   "death.attack.ultraviolet": "%s se ha disipado bajo los rayos ultravioleta",
   "death.attack.ultraviolet.player": "%s se ha disipado bajo los rayos ultravioleta mientras luchaba contra %s",
@@ -425,20 +435,27 @@
   "death.attack.roadRoller.player": "%s quedó aplastado como un panqueque mientras luchaba contra %s",
   "death.attack.eyeOfEnderShards": "Las entrañas de %s fueron destrozadas por un ojo de fragmentos de Ender.",
   "death.attack.eyeOfEnderShards.player": "Las entrañas de %s fueron destrozadas por un ojo de fragmentos de Ender.",
+  "death.attack.arrowLifeform": "%s died from a foreign organism growing inside",
+  "death.attack.arrowLifeform.player": "%s died from a foreign organism growing inside",
   "death.attack.stoneMask": "El cerebro de %s no pudo soportar el poder de las agujas de Máscara de Piedra",
-  
+  "death.attack.rockRespawn": "Eventually, %s has stopped thinking",
+  "death.attack.rockRespawn.player": "%1$s was fused with a rock whilst fighting %2$s",
+  "death.attack.rockBroken": "%s was mined",
+  "death.attack.rockBroken.player": "%s was mined whilst fighting %s",
+
   "stat.jojo.vampire_animals_drained": "Animales Drenados",
   "stat.jojo.vampire_people_drained": "Gente Drenada",
   "stat.jojo.vampire_zombies_created": "Zombis creados",
   "stat.jojo.vampire_zombies_summoned": "Zombis convocados",
   "stat.jojo.rps_won": "Juegos de piedra, papel y tijera ganados",
-  
+
   "key.categories.jojo": "JoJo",
   "jojo.key.toggle_stand": "Invocar Stand",
   "jojo.key.stand_remote_control": "Control remoto Stand",
+  "jojo.key.jojo_test": "§oTest keybind (NYI)",
   "jojo.key.hamon_skills_window": "Habilidades de Hamon",
   "jojo.key.jojo_menu": "Menú de JoJo",
-  
+
   "key.categories.jojo.hud": "JoJo | HUD",
   "jojo.key.stand_mode": "Modo HUD: Stand",
   "jojo.key.non_stand_mode": "Modo HUD: No Stand Power",
@@ -447,13 +464,14 @@
   "jojo.key.disable_hotbars": "Deshabilitar los controles del mod",
   "jojo.key.attack_hotbar": "1-9/Desplazarse Selecciona la acción LMB",
   "jojo.key.ability_hotbar": "1-9/Desplazarse Selecciona la acción RMB",
-  
+
   "key.categories.jojo.hud.alternative": "JoJo | Controles y atajos antiguos",
   "jojo.key.scroll_mode": "Cambiar el modo HUD",
   "jojo.key.scroll_attack": "Seleccionar la siguiente acción LMB",
   "jojo.key.scroll_ability": "Seleccionar la siguiente acción RMB",
   "jojo.key.meditation": "Atajo para la meditación Hamon",
-  
+
+  "key.mouse.lmb_and_rmb": "LMB + RMB",
   "key.mouse.left.shortened": "LMB",
   "key.mouse.right.shortened": "RMB",
   "key.mouse.middle.shortened": "MMB",
@@ -478,7 +496,7 @@
   "key.keyboard.left.shortened": "←",
   "key.keyboard.right.shortened": "→",
   "key.keyboard.print.screen.shortened": "PrtSc",
-  
+
   "jojo.screen.edit_hud_layout": "Editar controles",
   "jojo.screen.edit_hud_layout.reset": "Restablecer controles",
   "jojo.screen.edit_hud_layout.hotbars_on": "Las barras de acceso rápido del HUD están habilitadas",
@@ -498,13 +516,13 @@
   "jojo.keybind_mode.is_active.always": "Siempre",
   "jojo.keybind_mode.hud_visibility.true": "Siempre aparece en HUD",
   "jojo.keybind_mode.hud_visibility.false": "No está en HUD",
-  
+
   "jojo.overlay.mode_deselect": "Deseleccionar",
   "jojo.overlay.mode_key": "[%s] %s",
   "jojo.overlay.shift": "%s (%s: %s)",
   "jojo.overlay.hold": "(sostener) %s",
   "jojo.overlay.stand_strength": "Fuerza de Stando: %s",
-  
+
   "jojo.chat.controls.message": "¡Tienes un poder de JoJo! Escribe %s para obtener una guía detallada sobre los controles del mod",
   "jojo.chat.controls.tooltip": "Haga clic para pegar el comando en el chat.",
   "jojo.chat.command.controls.page": " --- Página %s/%s --- ",
@@ -532,12 +550,12 @@
   "jojo.chat.message.hamon_window_hint": "(Presione %s o interactúe con un usuario de Hamon para abrir la ventana de habilidades de Hamon)",
   "jojo.chat.message.cant_learn_hamon": "Ya tienes un poder incompatible con Hamon",
   "jojo.chat.message.stone_mask_peaceful": "No puedes convertirte en vampiro en dificultad pacífica.",
-  
+
   "jojo.layout_edit.locked": "Bloqueado",
   "jojo.layout_edit.locked.stand": "Se desbloquea en el nivel %s %s",
   "jojo.layout_edit.locked.stand.resolve": "Resolución",
   "jojo.layout_edit.locked.hamon_skill": "Se desbloquea con la habilidad %s",
-  
+
   "jojo.command_description": "%s - %s",
   "jojo.command.desc.jojoconfig": "Genera un paquete de datos para editar las estadísticas del Stand.",
   "jojo.command.desc.hamonstat": "Establece la estadística de Hamon de un jugador (entrenamiento de fuerza, control o respiración)",
@@ -549,9 +567,9 @@
   "jojo.command.desc.standlevel": "Establece, agrega o recupera el valor del nivel del Stand",
   "jojo.command.desc.standdisc": "Otorga un elemento de disco Stand con un Stand específico/aleatorio",
   "jojo.command.desc.pillarman": "Cambia la etapa de evolución del hombre pilar o el modo de batalla.",
-  
+
   "jojo.message.skip_soul_ascension": "Presiona %s para omitir la ascensión del alma",
-  
+
   "jojo.message.action_condition.no_stamina": "No tienes suficiente resistencia",
   "jojo.message.action_condition.no_energy_hamon": "Tu respiración aún no se ha estabilizado",
   "jojo.message.action_condition.no_energy_vampirism": "Tienes demasiada hambre",
@@ -563,13 +581,14 @@
   "jojo.message.action_condition.no_stand_part.main_body": "No controlas el cuerpo principal del Stand",
   "jojo.message.action_condition.no_stand_part.arms": "A tu Stand le faltan los brazos",
   "jojo.message.action_condition.no_stand_part.legs": "A tu Stand le faltan patas",
-  
+
   "jojo.message.action_condition.peaceful": "Los monstruos no pueden dañar a nadie en dificultad pacífica.",
   "jojo.message.action_condition.player_target": "Tienes que apuntar a un jugador con esta habilidad.",
   "jojo.message.action_condition.blood": "No puedes saciar tu sed con esta criatura.",
   "jojo.message.action_condition.fire": "No puedes hacerlo mientras estés en llamas.",
   "jojo.message.action_condition.ultrawarm": "Hace demasiado calor en este lugar",
   "jojo.message.action_condition.zombies_limit": "Demasiados zombis en la zona.",
+  "jojo.message.action_condition.already_vampire": "The target is already a vampire",
   "jojo.message.action_condition.cant_become_vampire": "El objetivo no puede convertirse en vampiro.",
   "jojo.message.action_condition.user_too_low_health": "Tu salud es demasiado baja",
   "jojo.message.action_condition.target_too_many_health": "El objetivo tiene demasiada salud.",
@@ -594,9 +613,9 @@
   "jojo.message.action_condition.disguise": "No puedes usarlo disfrazado",
   "jojo.message.action_condition.stone_form": "No puedes usarlo en forma de piedra.",
   "jojo.message.wall_climb.hint_jump": "Presiona %s para dejar de escalar",
-  
+
   "multiplayer.disconnect.invalid_stand_movement": "Se recibió un paquete Stand de movimiento no válido",
-  
+
   "jojo.config.keepStandOnDeath": "Mantener a Stand en la muerte",
   "jojo.config.keepStandOnDeath.tooltip": "Si los jugadores mantienen o no Stands después de la muerte.",
   "jojo.config.keepHamonOnDeath": "Mantén a Hamon en la muerte",
@@ -612,7 +631,7 @@
   "jojo.config.pillarManTempleSpawn": "Aparición del Templo del Hombre Pilar",
   "jojo.config.pillarManTempleSpawn.tooltip": "Ya sea que el Templo del Hombre del Pilar aparezca o no en fragmentos recién cargados.",
   "jojo.config.hamonPointsMultiplier": "Multiplicador de puntos Hamon",
-  "jojo.config.hamonPointsMultiplier.tooltip": "Multiplicador de crecimiento de los niveles de fuerza y ​​control de Hamon.",
+  "jojo.config.hamonPointsMultiplier.tooltip": "Multiplicador de crecimiento de los niveles de fuerza y \u200B\u200Bcontrol de Hamon.",
   "jojo.config.breathingTrainingMultiplier": "Multiplicador del entrenamiento respiratorio",
   "jojo.config.breathingTrainingMultiplier.tooltip": "El entrenamiento respiratorio multiplicador del crecimiento.",
   "jojo.config.breathingTrainingDeterioration": "Deterioro del entrenamiento respiratorio",
@@ -667,17 +686,25 @@
   "jojo.config.endermenBeyondTimeSpace.tooltip": "",
   "gamerule.jojoAbilitiesBreakBlocks": "Las habilidades de JoJo rompen bloques",
   "gamerule.jojoAbilitiesBreakBlocks.description": "Si los Stands y otras habilidades del mod RotP pueden romper bloques o no.",
-  
+
   "jojo.options.client.title": "Configuración del cliente RotP",
   "jojo.options.client.hud": "HUD...",
   "jojo.options.client.stand": "Stand...",
   "jojo.options.client.hamon": "Hamon...",
+  "jojo.options.client.vampirism": "Vampirism...",
   "jojo.config.client.barsPosition": "Posición de las barras",
   "jojo.config.client.barsPosition.tooltip": "Posición de las barras de Energía, Resistencia y Resolución en el HUD.",
   "jojo.config.client.hotbarsPosition": "Posición de las barras de acceso rápido",
   "jojo.config.client.hotbarsPosition.tooltip": "Posición del nombre de poder y barras de acceso rápido de acción en el HUD.",
+  "jojo.config.client.option.top_left": "Arriba a la izquierda",
+  "jojo.config.client.option.top_right": "Arriba a la derecha",
+  "jojo.config.client.option.left": "Izquierda",
+  "jojo.config.client.option.right": "Derecha",
   "jojo.config.client.hudNamesRender": "Representación de nombres de HUD",
   "jojo.config.client.hudNamesRender.tooltip": "Cómo deben representarse los nombres de los poderes y las acciones en el HUD.",
+  "jojo.config.client.option.always": "Siempre",
+  "jojo.config.client.option.fade_out": "Desaparecer",
+  "jojo.config.client.option.never": "Nunca",
   "jojo.config.client.hudHotbarsFold": "Minimizar las barras de acceso rápido del HUD",
   "jojo.config.client.hudHotbarsFold.tooltip": "Minimizar las barras de acceso rápido del HUD después de seleccionar una acción.",
   "jojo.config.client.showLockedSlots": "Mostrar espacios bloqueados",
@@ -696,6 +723,8 @@
   "jojo.config.client.option.stand_right": "Right",
   "jojo.config.client.standMotionTilt": "(WIP) Inclinación del movimiento Stand",
   "jojo.config.client.standMotionTilt.tooltip": "Permite inclinar el modelo humanoide del Stand cuando este se mueve. Versión anterior: se mejorará en actualizaciones posteriores.",
+  "jojo.config.client.standOutline": "Stand front outline",
+  "jojo.config.client.standOutline.tooltip": "When your Stand is in front of you, the game only renders its arms to not block the view, and a glowing outline in a shape of the Stand. Disabling this setting with remove this outline and only keep the arms.",
   "jojo.config.client.characterVoiceLines": "Líneas de voz de personajes",
   "jojo.config.client.characterVoiceLines.tooltip": "Si se reproducen o no las líneas de voz de los personajes de JoJo cuyos poderes usan los jugadores.",
   "jojo.config.client.thirdPersonHamonAura": "Aura de Hamon en tercera persona",
@@ -704,14 +733,9 @@
   "jojo.config.client.firstPersonHamonAura.tooltip": "Representa partículas de aura de Hamon alrededor de la mano del jugador",
   "jojo.config.client.hamonAuraBlur": "Desenfoque de aura de Hamon",
   "jojo.config.client.hamonAuraBlur.tooltip": "Desenfoque de partículas de aura de Hamon",
-  "jojo.config.client.option.top_left": "Arriba a la izquierda",
-  "jojo.config.client.option.top_right": "Arriba a la derecha",
-  "jojo.config.client.option.left": "Izquierda",
-  "jojo.config.client.option.right": "Derecha",
-  "jojo.config.client.option.always": "Siempre",
-  "jojo.config.client.option.fade_out": "Desaparecer",
-  "jojo.config.client.option.never": "Nunca",
-  
+  "jojo.config.client.vampireGlowingEyes": "Glowing eyes",
+  "jojo.config.client.vampireGlowingEyes.tooltip": "Red eyes glowing in the dark in 3rd person when you have 80% or more energy",
+
 
   "stand.unknown": "Stand desconocido: %s",
   "non_stand.unknown": "Poder desconocido: %s",
@@ -719,6 +743,7 @@
   "jojo.command.id_ambiguous": "ID ambigua: %s",
   "commands.stand.give.success.single": "Le dio %s a %s",
   "commands.stand.give.success.multiple": "Dio %s a %s jugadores",
+  "commands.stand.give.success.single.random": "Gave a random Stand to %s",
   "commands.stand.give.success.multiple.random": "Se dieron stands aleatorios a %s jugadores",
   "commands.stand.give.failed.single.has": "%s ya tiene un Stand",
   "commands.stand.give.failed.multiple.have": "Todos los %s jugadores ya tienen Stands",
@@ -781,19 +806,25 @@
   "commands.pillarman.stage.success.multiple": "Se entregó %s etapa de evolución de Hombre del Pilar a %s jugadores",
   "commands.pillarman.mode.success.single": "Le dio %s modo de batalla Hombre del Pilar a %s",
   "commands.pillarman.mode.success.multiple": "Se le dio a %s jugadores el modo de batalla Hombre del Pilar",
-  
+
   "commands.jojoconfigpack.base_created.link_name": "Generado",
   "commands.jojoconfigpack.base_created": "%s paquete de datos de configuración llamado %s",
   "commands.jojoconfigpack.folder_link": "Enlace del paquete de datos %s",
   "commands.jojoconfigpack.folder_link.tooltip": "Haga clic para abrir el paquete de datos (dentro de la carpeta %s de este guardado).",
-  
+  "commands.jojoconfigpack.standstats.all.folder_link": "Haga clic para abrir la ruta del archivo",
+  "commands.jojoconfigpack.local_file_link": "Click to open the file path",
+  "commands.jojoconfigpack.remote_server": "Go to the %s directory of the remote server to edit the config",
+
   "commands.jojoconfigpack.standstats.all.link_name": "Generado",
   "commands.jojoconfigpack.standstats.all": "%s archivos de estadísticas de Stand predeterminados",
-  "commands.jojoconfigpack.standstats.all.folder_link": "Haga clic para abrir la ruta del archivo",
   "commands.jojoconfigpack.standstats.single.link_name": "Generado",
   "commands.jojoconfigpack.standstats.single": "%s archivo de estadísticas de stand predeterminado para %s",
-  "commands.jojoconfigpack.standstats.single.folder_link": "Haga clic para abrir la ruta del archivo",
-  
+
+  "commands.jojoconfigpack.abilities.stand.link_name": "Generated",
+  "commands.jojoconfigpack.abilities.stand": "(WIP) %s config files for all configurable abilities of %s",
+  "commands.jojoconfigpack.abilities.single.link_name": "Generated",
+  "commands.jojoconfigpack.abilities.single": "(WIP) %s config file for %s",
+
   "commands.jojoconfigpack.stand_assign.added": "Se agregó %s a la lista de Stands asignados a %s",
   "commands.jojoconfigpack.stand_assign.removed": "Se ha eliminado %s de la lista de Stands asignados a %s",
   "commands.jojoconfigpack.stand_assign.cleared": "Asignaciones de Stand despejadas de %s",
@@ -802,10 +833,10 @@
   "commands.jojoconfigpack.stand_assign.failed.add": "%s ya fue asignado a %s",
   "commands.jojoconfigpack.stand_assign.failed.remove": "%s no fue asignado a %s",
   "commands.jojoconfigpack.stand_assign.failed.clear": "%s no tenía ningún Stand asignado",
-  
+
   "chat.stand_remote_reveal_name": "%s (Usuario de Stand: %s)",
   "jojo.ui.player_menu": "Menú del jugador (TBA)",
-  
+
   "jojo.action.toast.title": "¡Nuevas acciones desbloqueadas!",
   "jojo.action.toast.stand.attack.description": "Nuevos ataques de Stand",
   "jojo.action.toast.stand.ability.description": "Nuevas habilidades de Stand",
@@ -818,7 +849,7 @@
   "hamon_skill.toast.strength.description": "Visitar a un profesor de Hamon",
   "hamon_skill.toast.control.description": "Visitar a un profesor de Hamon",
   "hamon_skill.toast.technique.description": "Presione %s -> Técnicas",
-  
+
   "hamon.intro.tab": "Introducción",
   "hamon.intro.about.name": "Acerca de Hamon",
   "hamon.intro.about.text": "En JJBA, Hamon es una forma de energía que producen los luchadores entrenados a través de la respiración. Esta energía tiene propiedades similares a las de la luz solar, lo que la hace letal para los zombis, los vampiros y los Hombres del Pilar. En este mod, es uno de los poderes únicos que puedes obtener.",
@@ -836,10 +867,10 @@
   "hamon.intro.breath.text4.underlined": "Estabilidad respiratoria",
   "hamon.intro.breath.text5": "Si gestionas bien tu energía Hamon no tendrás que preocuparte por eso.",
   "hamon.intro.stats_transition": "Con el entrenamiento adecuado, puedes convertirte en un guerrero Hamon más fuerte. La siguiente pestaña muestra tus estadísticas de Hamon y explica el proceso de entrenamiento.",
-  
+
   "hamon.breath_control_mask.restore_stab": "Utilice la respiración Hamon para respirar a través de la máscara.",
   "hamon.out_of_breath": "Out of breath!",
-  
+
   "hamon.stats.tab": "Estadísticas",
   "hamon.strength_level": "Fuerza de Hamon: %s/%s",
   "hamon.strength_stat.desc": "Determina el poder de tus ataques Hamon. Se entrena mediante ataques Hamon.",
@@ -863,7 +894,7 @@
   "hamon.mining_exercise": "Minería",
   "hamon.running_exercise": "Correr",
   "hamon.swimming_exercise": "Nadar",
-  "hamon.meditation": "Meditación",
+  "hamon.meditation_exercise": "Meditation",
   "hamon.meditation_button": "Haz clic aquí para comenzar a meditar (se detiene si te mueves)",
   "hamon.meditation_button.stability_hint": "Meditar también ayuda a restablecer la estabilidad de la respiración más rápidamente.",
   "hamon.exercise.completion_buff_hint": "Una vez completado:",
@@ -884,7 +915,7 @@
   "hamon.exercise.all.count.message.4": "Completed %s/%s exercises!",
   "hamon.exercise.all.count.message2.3": "Breathing training will increase by %s levels",
   "hamon.exercise.all.count.message2.4": "You can take a break for the next %s days",
-  
+
   "hamon.next_point.strength": "Próximo punto de habilidad en el nivel %s Fuerza de Hamon",
   "hamon.next_point.control": "Próximo punto de habilidad en el nivel %s Control de Hamon",
   "hamon.unspent_points": "¡Tienes puntos de habilidad sin gastar, úsalos para aprender nuevas habilidades de Hamon!",
@@ -908,7 +939,7 @@
   "hamon.abandon.tab": "Abandonar el entrenamiento",
   "hamon.abandon.tab.desc": "¿Realmente quieres abandonar por completo tu entrenamiento Hamon?",
   "hamon.abandon.tab.desc2": "Se restablecerá todo el progreso.",
-  
+
   "hamon.closed.parents": "Primero debes aprender habilidades previas",
   "hamon.closed.points": "No tienes puntos de habilidad para esto.",
   "hamon.techniques_locked": "Las habilidades técnicas se desbloquearán en el nivel %s de Fuerza de Hamon y Control de Hamon.",
@@ -918,7 +949,7 @@
   "hamon.closed.teacher.required": "Sólo puedes aprender esto de otro usuario de Hamon",
   "hamon.closed.teacher.no_skill": "Nadie cerca de ti ha aprendido esta habilidad.",
   "hamon.skill.required_skills_list": "Habilidades requeridas:",
-  
+
   "hamon.skills.overdrive": "Sobremarcha",
   "hamon.skills.infusion": "Infusión",
   "hamon.skills.flexibility": "Flexibilidad",
@@ -931,12 +962,12 @@
   "hamon.skills.life.desc": "La energía Hamon puede acelerar la regeneración de un cuerpo vivo.",
   "hamon.skills.attractant_repellent.desc": "El Hamon atrayente y repelente son dos tipos opuestos de energía Hamon, cada uno con sus casos de uso especiales.",
   "hamon.skills.body_manipulation.desc": "La energía Hamon puede afectar a los organismos haciendo vibrar el agua dentro de sus cuerpos.",
-  
+
   "hamon.skill_type.attack": "Ataque",
   "hamon.skill_type.ability": "Habilidad",
   "hamon.skill_type.passive": "Pasiva",
   "hamon.skill_type.item": "Habilidad del objeto",
-  
+
   "hamonSkill.overdrive.name": "Sobremarcha",
   "hamonSkill.overdrive.desc": "Los puñetazos del usuario sin armas infligen daño adicional a Hamon. Hamon es especialmente eficaz contra criaturas no muertas.",
   "hamonSkill.overdrive_strong.desc": "Shift variation - Hamon Beat - is a stronger attack with extra knockback.",
@@ -990,7 +1021,7 @@
   "hamonSkill.hamon_shock.desc": "El usuario aplica una carga de Hamon directamente a la cabeza de una criatura viviente, incapacitándola por un breve tiempo. The shock wears off if the target takes damage.",
   "hamonSkill.hamon_spread.name": "Untable De Hamon",
   "hamonSkill.hamon_spread.desc": "Cada vez que el usuario ataca a un no-muerto con Hamon, este continúa propagándose por el cuerpo del objetivo, debilitándolo y ralentizando su regeneración.",
-  
+
   "hamon.technique.jonathan": "¡Corazón tembloroso! ¡Calor ardiente!",
   "hamon.technique.zeppeli": "Camino del Ermitaño",
   "hamon.technique.joseph": "Trampas elaboradas",
@@ -1002,7 +1033,7 @@
   "hamon.technique.skill_buff.skill": "%s: +%s%%",
   "hamon.technique.no_reset_warning": "Choose carefully! You won't be able to change your technique unless you fully abandon the Hamon training and start over.",
   "hamon.technique.no_reset_warning.2_tmp": "Please note that some of the skills are undergoing a rework.",
-  
+
   "hamonSkill.natural_talent.name": "Talento natural",
   "hamonSkill.natural_talent.desc": "Tu entrenamiento de Hamon es 2 veces más rápido.",
   "hamonSkill.scarlet_overdrive.name": "Sobremarcha escarlata (WIP)",
@@ -1020,7 +1051,7 @@
   "hamonSkill.tornado_overdrive.name": "Tornado sobremarcha",
   "hamonSkill.tornado_overdrive.desc": "Al girar a gran velocidad, infliges daño de Hamon a los enemigos que te rodean. Este ataque es especialmente letal al caer.",
   "hamonSkill.deep_pass.name": "Sobremarcha de paso profundo",
-  "hamonSkill.deep_pass.desc": "Cuando mueres, transfieres toda tu energía vital (niveles de Fuerza y ​​Control de Hamon) a un Usuario de Hamon cercano.",
+  "hamonSkill.deep_pass.desc": "Cuando mueres, transfieres toda tu energía vital (niveles de Fuerza y \u200B\u200BControl de Hamon) a un Usuario de Hamon cercano.",
   "hamonSkill.clacker_volley.name": "Volea de clacker (WIP)",
   "hamonSkill.clacker_volley.desc": "Te permite usar un par de clackers como arma cuerpo a cuerpo con Hamon incorporado o cargarlo y lanzarlo al oponente a alta velocidad.",
   "hamonSkill.rope_trap.name": "Trampa de cuerda (WIP)",
@@ -1038,18 +1069,18 @@
   "hamonSkill.bubble_barrier.name": "Barrera de burbujas",
   "hamonSkill.bubble_barrier.desc": "Dispara una burbuja de gran tamaño que atrapa a su objetivo durante unos segundos.",
   "hamonSkill.crimson_bubble.name": "Burbuja carmesí",
-  "hamonSkill.crimson_bubble.desc": "Cuando mueres, pones tu energía vital (niveles de Fuerza y ​​Control de Hamon) en una burbuja, desde donde puede transferirse a otro usuario de Hamon.",
+  "hamonSkill.crimson_bubble.desc": "Cuando mueres, pones tu energía vital (niveles de Fuerza y \u200B\u200BControl de Hamon) en una burbuja, desde donde puede transferirse a otro usuario de Hamon.",
   "hamonSkill.aja_stone_keeper.name": "Guardián de Piedra Aja",
   "hamonSkill.aja_stone_keeper.desc": "Puedes cargar instantáneamente una piedra Aja con Hamon. Si usas una piedra Aja normal, tienes una pequeña posibilidad de convertirla en Super Aja.",
   "hamonSkill.satiporoja_scarf.name": "Bufanda de escarabajo Satiporoja (WIP)",
   "hamonSkill.satiporoja_scarf.desc": "Obtienes una bufanda que, cuando la usas, reduce la energía de Hamon gastada y absorbe el daño de Hamon. Puedes usarla como arma cuerpo a cuerpo conductora de Hamon o blandirla para cubrir un área más grande de objetivos.",
   "hamonSkill.snake_muffler.name": "Silenciador de serpiente (WIP)",
   "hamonSkill.snake_muffler.desc": "Cuando te atacan con la bufanda puesta, saltas sobre el atacante que la usa y le infliges daño de Hamon (tiene un tiempo de recuperación). Atacar con la bufanda mientras te mueves sigilosamente atrapa al objetivo.",
-  
+
   "jojo.chat.joseph.next_line.1": "Tu siguiente linea es \"%s\"",
   "jojo.chat.joseph.next_line.2": "A continuación, dirás \"%s\"",
   "jojo.chat.joseph.next_line.3": "A continuación, vas a decir: \"%s\"",
-  
+
   "non_stand.jojo.hamon": "Hamon",
   "action.jojo.hamon_overdrive": "Sobremarcha",
   "action.jojo.hamon_overdrive_beat": "Golpe de Hamon",
@@ -1070,7 +1101,7 @@
   "action.jojo.hamon_protection": "Rechazo de Hamon",
   "action.jojo.hamon_hypnosis": "Hipnosis animal",
   "action.jojo.hamon_shock": "Choque Hamon",
-  
+
   "action.jojo.jonathan_overdrive_barrage": "Bombardeo de sobremarcha",
   "action.jojo.jonathan_syo_barrage": "Bombardeo de sobremarcha amarillo luz solar",
   "action.jojo.jonathan_metal_silver_overdrive": "Sobremarcha de metal plateado",
@@ -1085,7 +1116,7 @@
   "action.jojo.caesar_bubble_barrier": "Barrera de burbujas",
   "action.jojo.caesar_bubble_cutter": "Cortador de burbujas",
   "action.jojo.caesar_bubble_cutter_gliding": "Cortador de burbujas deslizante",
-  
+
   "non_stand.jojo.vampirism": "Vampirismo",
   "action.jojo.vampirism_claw_lacerate": "Garra lacerada",
   "action.jojo.vampirism_blood_drain": "Drenaje de sangre",
@@ -1095,21 +1126,24 @@
   "action.jojo.vampirism_blood_gift": "Regalo de sangre",
   "action.jojo.vampirism_dark_aura": "Atmósfera malvada",
   "action.jojo.vampirism_hamon_suicide": "Utilice Hamon",
-  
+  "action.jojo.vampirism_freeze_counter": "Contra ataque gélido",
+  "action.jojo.vampirism_freeze_shield": "Capa de frío protectora",
+
   "jojo.vampire.ready_to_cure": "Tienes sueño. Quizá dormir un poco acabe con esta pesadilla...",
-  
+
   "non_stand.jojo.zombie": "Zombi",
   "action.jojo.zombie_claw_lacerate": "Garra lacerada",
   "action.jojo.zombie_devour": "Devorar",
   "action.jojo.zombie_disguise": "Ocultar",
   "action.jojo.zombie_disguise.disable": "De vuelta a la forma zombie",
-  
+
   "non_stand.jojo.pillarman": "Hombre pilar",
   "action.jojo.pillarman_heavy_punch": "Golpe fuerte",
   "action.jojo.pillarman_stone_form": "Convertirse en piedra",
   "action.jojo.pillarman_absorption": "Absorción",
   "action.jojo.pillarman_regeneration": "Regeneración antinatural",
   "action.jojo.pillarman_enhanced_senses": "Sentidos mejorados",
+  "action.jojo.pillarman_evasion": "Evasion",
   "action.jojo.pillarman_unnatural_agility": "Agilidad antinatural",
   "action.jojo.pillarman_horn_attack": "Ataque de cuerno",
   "action.jojo.pillarman_ribs_blades": "Cuchillas de costillas",
@@ -1118,10 +1152,12 @@
   "action.jojo.pillarman_small_sandstorm": "Modo de viento: Viento cortante",
   "action.jojo.pillarman_wind_cloak": "Modo viento: Capa de viento",
   "action.jojo.pillarman_atmospheric_rift": "Modo de viento: Grieta atmosférica",
-  "action.jojo.pillarman_erratic_blaze_king": "Modo de calor: Rey del fuego errático",  
+  "action.jojo.pillarman_erratic_blaze_king": "Modo de calor: Rey del fuego errático",
   "action.jojo.pillarman_giant_carthwheel_prison": "Modo calor: Prisión gigante de rueda de carro",
   "action.jojo.pillarman_self_detonation": "Modo calor: Autodetonación",
   "action.jojo.pillarman_light_flash": "Modo de luz: Luz intermitente",
+  "action.jojo.pillarman_light_flash_decoy": "Light Mode: Light Flash Decoy",
+  "action.jojo.pillarman_blade_slash": "Light Mode: Brilliant Bone Blade",
   "action.jojo.pillarman_blade_dash_attack": "Ataque de carrera con cuchillas",
   "action.jojo.pillarman_blade_barrage": "Bombardeo de espadas",
 
@@ -1134,10 +1170,10 @@
   "jojo.subtitle.stand_damage_block": "Daño bloqueado",
   "jojo.subtitle.stand_crash": "Stand se estrelló",
   "jojo.subtitle.stand_attack_parried": "Ataque parado",
-  
+
   "jojo.attribute.name.stand_resistance": "Resistencia Stand",
   "jojo.attribute.name.stand_precision": "Precisión Stand",
-  
+
   "jojo.stand_stat.strength": "Poder",
   "jojo.stand_stat.speed": "Rapidez",
   "jojo.stand_stat.range": "Rango",
@@ -1148,16 +1184,19 @@
   "jojo.stand_stat.stand_user": "Usuario de Stand: %s",
   "jojo.stand_stat.button.show": "Mostrar: Estadísticas del stand",
   "jojo.stand_stat.button.hide": "Ocultar: Estadísticas del stand",
-  
+
   "jojo.stand_skins.button": "Aspectos de Stand (WIP)",
-  
+
   "jojo.stand_ui.name": "Información del stand (WIP)",
-  
+
   "jojo.disc.stand": "Stand: %s",
   "jojo.arrow.stand_arrow_xp": "Gasta %s niveles para tener más posibilidades de sobrevivir.",
   "jojo.arrow.stands_hint": "%s para ver la lista de Stands disponibles",
   "jojo.arrow.stands_list": "Stands disponibles:",
   "jojo.arrow.no_stands": "Todos los stands están prohibidos",
+  "jojo.arrow.assigned_banned": "There are no available Stands assigned to %s",
+  "jojo.arrow.all_stands_taken": "All Stands available on this server are already taken",
+  "jojo.arrow.no_stand_weights": "Failed to pick a random Stand",
   "jojo.arrow.least_taken_mode": "Otorga un Stand a los jugadores que menos tienen en el servidor.",
   "jojo.arrow.not_taken_mode": "Otorga un Stand que ningún otro jugador en el servidor tiene",
   "jojo.story_part.1": "Sangre fantasma",
@@ -1169,7 +1208,9 @@
   "jojo.story_part.7": "Carrera de bolas de acero",
   "jojo.story_part.8": "JoJolion",
   "jojo.story_part.9": "Las Tierras JOJO",
-  
+
+  "jojo.message.action_condition.only_stand_user": "This ability cannot affect Stands",
+
   "entity.jojo.star_platinum": "Star Platinum",
   "entity.jojo.sp_star_finger": "Dedo Star",
   "stand.jojo.star_platinum": "Star Platinum",
@@ -1192,7 +1233,7 @@
   "jojo.subtitle.star_platinum_the_world": "\"Star Platinum, The World!\"",
   "jojo.subtitle.time_resumes.dasu": "\"Se reanuda el tiempo\"",
   "jojo.subtitle.time_resumes.hajimeta": "\"Se reanuda el tiempo\"",
-  
+
   "entity.jojo.the_world": "The World",
   "entity.jojo.road_roller": "Apisonadora",
   "stand.jojo.the_world": "The World",
@@ -1221,7 +1262,7 @@
   "jojo.subtitle.rodo_rolla_da": "\"¡Apisonadora!\"",
   "jojo.subtitle.road_roller_land": "Aterrizaje de apisonadora",
   "jojo.subtitle.road_roller_hit": "Golpe de apisonadora",
-  
+
   "entity.jojo.hierophant_green": "Hierophant Green",
   "entity.jojo.hg_string": "Cuerda de Hierophant Green",
   "entity.jojo.hg_grappling_string": "Cuerda de agarre del Hierophant Green",
@@ -1242,7 +1283,7 @@
   "jojo.subtitle.hierophant_green_name_short": "\"¡Hierophant!\"",
   "jojo.subtitle.emerald_splash_name": "\"¡Salpicadura de esmeralda!\"",
   "jojo.subtitle.rero": "RERORERORERO",
-  
+
   "entity.jojo.silver_chariot": "Silver Chariot",
   "entity.jojo.sc_rapier": "Estoque de Silver Chariot",
   "entity.jojo.sc_flame": "Llama",
@@ -1261,7 +1302,7 @@
   "jojo.subtitle.silver_chariot_name_short": "\"¡Chariot!\"",
   "jojo.subtitle.hora_hora_hora": "\"HORA HORA HORA!\"",
   "jojo.subtitle.polnareff_fencing": "\"¿Qué te parece esa valla?\"",
-  
+
   "entity.jojo.magicians_red": "Magician's Red",
   "entity.jojo.mr_flame": "Llama de Magician's Red",
   "entity.jojo.mr_fireball": "Bola de fuego de Magician's Red",
@@ -1288,7 +1329,7 @@
   "jojo.subtitle.crossfire_hurricane_name": "\"¡Huracán de Llamaradas!\"",
   "jojo.subtitle.crossfire_hurricane_special_name": "\"¡Especial Llamarada Huracán!\"",
   "jojo.subtitle.red_bind_name": "\"¡Red Bind!\"",
-  
+
   "entity.jojo.crazy_diamond": "Crazy Diamond",
   "entity.jojo.cd_block_bullet": "Bloquear bala",
   "entity.jojo.cd_blood_cutter": "Cortador de sangre",
@@ -1301,6 +1342,7 @@
   "action.jojo.crazy_diamond_misshape_face": "Cara deformada",
   "action.jojo.crazy_diamond_misshape_arms": "Brazos deformes",
   "action.jojo.crazy_diamond_misshape_legs": "Piernas deformes",
+  "action.jojo.crazy_diamond_angelo_rock": "Fuse target with rock",
   "action.jojo.crazy_diamond_barrage": "Bombardeo de puñetazos",
   "action.jojo.crazy_diamond_block_bullet": "Bloquear bala",
   "action.jojo.crazy_diamond_block_bullet.homing": "Bala buscadora",
@@ -1326,13 +1368,90 @@
   "jojo.message.action_condition.cd_heal_self": "No puedes curarte a ti mismo",
   "jojo.message.action_condition.heal_target": "Esta entidad no se puede curar",
   "jojo.message.action_condition.item_block_origin": "Necesitas un bloque de anclaje en la mano",
+  "jojo.message.action_condition.angelo_no_block_broken": "The knockback did not break any blocks",
+  "jojo.message.action_condition.angelo_no_stone_broken": "The impact from knockback did not break enough stone blocks",
   "jojo.subtitle.crazy_diamond_name": "\"¡Crazy Diamond!\"",
   "jojo.subtitle.fix": "\"¡Reparar!\"",
+  "jojo.subtitle.pray_for_eternity": "\"Pray for eternity!\"",
+  "jojo.subtitle.yo_angelo": "\"Yo, Angelo!\"",
   "jojo.subtitle.dora": "DORA",
   "jojo.subtitle.dorarara": "DORARARARARA",
   "jojo.subtitle.fixed": "Algo se está arreglando",
   "jojo.subtitle.blood_splash": "Salpicaduras de sangre",
-  
+  "jojo.subtitle.angelo_rock_grunt": "UGH",
+
+  "entity.jojo.gold_experience": "Gold Experience",
+  "stand.jojo.gold_experience": "Gold Experience",
+  "action.jojo.gold_experience_punch": "Punch",
+  "action.jojo.gold_experience_heavy_punch": "Heavy Punch",
+  "action.jojo.gold_experience_lifeshot_punch": "Heavy Punch",
+  "action.jojo.gold_experience_lifeshot": "Life Shot",
+  "action.jojo.gold_experience_barrage": "Punch Barrage",
+  "action.jojo.gold_experience_block": "Block",
+  "action.jojo.gold_experience_choose_lifeform": "Choose lifeform",
+  "action.jojo.gold_experience_create_lifeform": "Create lifeform",
+  "action.jojo.gold_experience_create_lifeform.param": "Create %s",
+  "action.jojo.gold_experience_tooth_lifeform": "Turn tooth into lifeform",
+  "action.jojo.gold_experience_tooth_lifeform.param": "Turn tooth into %s",
+  "action.jojo.gold_experience_revert_lifeform": "Revert",
+  "action.jojo.gold_experience_revert_lifeform.param": "Revert to %s",
+  "action.jojo.gold_experience_mark_item": "Imbue item with life",
+  "action.jojo.gold_experience_mark_item.param": "Imbue %s with life",
+  "action.jojo.gold_experience_bone_meal": "Organism Growth",
+  "action.jojo.gold_experience_heal": "Plug up wounds",
+  "action.jojo.gold_experience_life_detector": "Life Sensor",
+  "action.jojo.gold_experience_heal.arrow": "Plug up arrow wound",
+  "action.jojo.gold_experience_heal.knife": "Plug up knife wound",
+  "action.jojo.gold_experience_heal_other": "Plug up %s's wounds",
+  "action.jojo.gold_experience_heal_other.arrow": "Plug up %s's arrow wound",
+  "action.jojo.gold_experience_heal_other.knife": "Plug up %s's knife wound",
+  "action.jojo.gold_experience_heal_other.dying": "Give life energy to %s",
+  "action.jojo.gold_experience_healing_item": "Create body tissue",
+  "entity.jojo.util_object.tooth": "Tooth",
+  "entity.jojo.ge_lifeform": "Gold Experience's Lifeform",
+  "item.jojo.gold_experience_body_tissue": "Body Tissue",
+  "gold_experience.lifeforms.animals": "Animals",
+  "gold_experience.lifeforms.plants": "Plants (NYI)",
+  "gold_experience.lifeform_unseen": "%s (NEW)",
+  "jojo.ui.list_expand": "Expand",
+  "jojo.ui.list_collapse": "Collapse",
+  "jojo.ui.text_button_hovered": "> %s",
+  "jojo.ui.favorite": "Add to Favorites",
+  "jojo.ui.favorite_remove": "Remove from Favorites",
+  "jojo.ge_lifeform.grid_fav_add": "Right click to add to favorites",
+  "jojo.ge_lifeform.grid_fav_remove": "Right click to remove from favorites",
+  "jojo.ui.lifeform_ui_mode.all": "All",
+  "jojo.ui.lifeform_ui_mode.favs": "Favorites",
+  "jojo.ui.lifeform_ui_mode.new": "New",
+  "gold_experience.lifeform_size": "%sx%sx%sm",
+  "gold_experience.lifeform_time": "%ss",
+  "jojo.ge_lifeform.search_field": "Search",
+  "jojo.ge_lifeform.unlock_all": "Unlock all",
+  "ge_new_lifeform.toast.title": "New lifeform unlocked!",
+  "ge_new_lifeform.toast.title.subtype": "New subtype unlocked",
+  "jojo.ge_item_marked": "Imbued with life",
+  "jojo.ge_item_marked.2": "(You can track this item's location and turn it into a lifeform remotely)",
+  "jojo.message.action_condition.choose_lifeform": "You have to choose a lifeform first",
+  "jojo.message.action_condition.ge_lifeform_material": "You need a non-living block or an item in your off-hand",
+  "jojo.message.action_condition.ge_lifeform_material_only_item": "You need a non-living item in your off-hand",
+  "jojo.message.action_condition.ge_lifeform_material_item": "You can't give life to an organic item",
+  "jojo.message.action_condition.ge_lifeform_material_block": "You can't give life to an organic block",
+  "jojo.message.action_condition.ge_too_many_mobs": "You have too many mobs summoned",
+  "jojo.message.action_condition.ge_heal_non_living": "This entity does not regenerate",
+  "jojo.message.action_condition.ge_heal_stand": "You need to target the Stand user directly",
+  "jojo.message.action_condition.resurrect_dead": "No Stand power can truly bring the dead back to life",
+  "jojo.message.action_condition.ge_heal_stronger": "You are already under a strong regeneration effect",
+  "jojo.message.action_condition.ge_heal_stronger.other": "%s is already under a strong regeneration effect",
+  "jojo.message.action_condition.ge_heal_full_hp": "You are not injured",
+  "jojo.message.action_condition.ge_heal_full_hp.other": "%s is not injured",
+  "jojo.message.action_condition.dying_hamon": "Your body does not breathe and has no blood flow",
+  "jojo.subtitle.gold_experience_name": "\"Gold Experience!\"",
+  "jojo.subtitle.giorno_new_life": "\"Life, spring forth!\"",
+  "jojo.subtitle.life_created": "Life created",
+  "jojo.subtitle.life_reverted": "Life reverted",
+  "jojo.subtitle.life_item": "Item imbued with life",
+  "jojo.subtitle.ge_heal": "Injury mended",
+
   "stand.jojo.boy_ii_man": "Chico a Hombre",
   "entity.jojo.rps_kid": "Piedra-Papel-Tijera niño",
   "item.jojo.rps_kid_spawn_egg": " Generar Niño Piedra-Papel-Tijeras",
@@ -1348,14 +1467,37 @@
   "jojo.rps.rock": "Roca",
   "jojo.rps.paper": "Papel",
   "jojo.rps.scissors": "Tijeras",
-  
+
   "stand.jojo.mr_president": "Sr.Presidente",
   "entity.jojo.coco_jumbo_turtle": "Jumbo Coco",
+  "item.jojo.coco_jumbo_spawn_egg": "Coco Jumbo Spawn Egg (WIP)",
+  "item.jojo.mr_president_key": "Llave de tortuga",
   "item.jojo.mr_president_key.named": "Llave %s",
+  "item.jojo.mr_president_master_key": "Master Key",
+  "item.jojo.mr_president_master_key.hint": "Can be used to recover a lost key for a locked turtle.",
   "block.jojo.coco_jumbo_shell": "Caparazón de tortuga",
   "block.jojo.mr_president_gem": "Gema clave",
-  
+  "hint.mr_president_exit": "Right click to exit the room",
+  "coco_jumbo.stand_arrow_hint": "~ This turtle looks special. Does it have the potential to become a Stand user? ~",
+  "advancements.jojo.coco_jumbo.title": "Could This Turtle Be a Stand User?",
+  "advancements.jojo.coco_jumbo.description": "Find a turtle with a key-shaped hole in its shell\nYou can carry the turtle by right-clicking it.",
+  "advancements.jojo.coco_jumbo_key.title": "No Lock or Door Fits This Key!",
+  "advancements.jojo.coco_jumbo_key.description": "Put a key into a turtle's shell, so that its Stand can be deactivated when you pull out the key (Shift+RMB).\nEach turtle can only have one key, so don't lose yours!",
+  "advancements.jojo.mr_president.title": "Traitors Won't Find You in This Vehicle",
+  "advancements.jojo.mr_president.description": "Enter a room created by the ability of the turtle's Stand",
+  "advancements.jojo.mr_president_walls.title": "It's Like Some Kind of Spaceship!",
+  "advancements.jojo.mr_president_walls.description": "Decorate the room inside the turtle",
+  "coco_jumbo.key.no_stand": "%s has not awakened its Stand",
+  "coco_jumbo.key.empty": "This key isn't assigned to a turtle",
+  "coco_jumbo.key.wrong": "This key is assigned to another turtle",
+  "coco_jumbo.key.not_empty": "This key is already assigned to a turtle",
+  "coco_jumbo.carry.offhand": "You need to free your off-hand to carry %s",
+  "coco_jumbo.hint.release": "Press %s to put %s down",
+
   "jojo.textutil.shortened": "%s...",
-  
-  "jojo.to_be_continued": "To Be Continued"
+
+  "jojo.to_be_continued": "To Be Continued",
+  "_advancements.jojo.mask_suicide.title": "Primitive Human...",
+  "commands.jojoconfigpack.standstats.single.folder_link": "Haga clic para abrir la ruta del archivo",
+  "hamon.meditation": "Meditación"
 }

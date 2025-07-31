@@ -29,6 +29,7 @@ public class CustomResources {
         resourceManager.registerReloadListener(modSplashes = new ModSplashes(mc.getUser(), new ResourceLocation(JojoMod.MOD_ID, "texts/splashes.txt")));
         resourceManager.registerReloadListener(new ResourceReloadNotifier());
         resourceManager.registerReloadListener(standSkinsLoader = new StandSkinsManager());
+        JojoMod.LOGGER.debug("Stand Skins ");
         resourceManager.registerReloadListener(standModelOverrides = new StandModelOverrides(new Gson()));
         resourceManager.registerReloadListener(standModelAnimations = new GeckoAnimLoader(new Gson()));
         resourceManager.registerReloadListener(aprilFools25VoiceCommands = new CommandsMap(new Gson()));

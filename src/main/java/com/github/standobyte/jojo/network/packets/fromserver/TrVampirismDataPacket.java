@@ -30,6 +30,7 @@ public class TrVampirismDataPacket {
     public static TrVampirismDataPacket curingTicks(int entityId, int ticks) {
         return new TrVampirismDataPacket(entityId, VampireField.CURING_TICKS, false, ticks);
     }
+
     
     private TrVampirismDataPacket(int entityId, VampireField flag, boolean valueBool, int valueInt) {
         this.entityId = entityId;
@@ -104,6 +105,6 @@ public class TrVampirismDataPacket {
     private static enum VampireField {
         WAS_HAMON_USER,
         AT_FULL_POWER,
-        CURING_TICKS
+        CURING_TICKS,
     }
 }

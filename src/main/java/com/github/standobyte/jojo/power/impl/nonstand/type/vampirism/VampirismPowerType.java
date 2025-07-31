@@ -64,6 +64,9 @@ public class VampirismPowerType extends NonStandPowerType<VampirismData> {
     @Override
     public float tickEnergy(INonStandPower power) {
         VampirismData vampirism = power.getTypeSpecificData(this).get();
+        if(power.getEnergy() <= 0){
+            vampirism.setFreezeShield(false);
+        }
         if (vampirism.isBeingCured()) {
             if (vampirism.getCuringStage() >= 4) {
                 return 0;
@@ -78,6 +81,12 @@ public class VampirismPowerType extends NonStandPowerType<VampirismData> {
         if (power.isUserCreative()) {
             inc = Math.max(inc, 0);
         }
+
+        if(power.getTypeSpecificData(this).map(VampirismData::isFreezeShield).orElse(false)){
+            inc -=.45F;
+        }
+
+
         return power.getEnergy() + inc;
     }
     
@@ -166,6 +175,7 @@ public class VampirismPowerType extends NonStandPowerType<VampirismData> {
             if (vampirism.refreshBloodLevel(bloodLevel)) {
                 updatePassiveEffects(entity, power);
             }
+
         }
         vampirism.tickCuring(entity, power);
     }

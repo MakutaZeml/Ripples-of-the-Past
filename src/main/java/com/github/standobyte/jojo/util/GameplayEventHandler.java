@@ -19,13 +19,7 @@ import javax.annotation.Nullable;
 import com.github.standobyte.jojo.JojoMod;
 import com.github.standobyte.jojo.JojoModConfig;
 import com.github.standobyte.jojo.JojoModConfig.Common;
-import com.github.standobyte.jojo.action.non_stand.HamonPlantItemInfusion;
-import com.github.standobyte.jojo.action.non_stand.HamonRebuffOverdrive;
-import com.github.standobyte.jojo.action.non_stand.HamonRopeTrap;
-import com.github.standobyte.jojo.action.non_stand.HamonSnakeMuffler;
-import com.github.standobyte.jojo.action.non_stand.PillarmanBladeBarrage;
-import com.github.standobyte.jojo.action.non_stand.PillarmanUnnaturalAgility;
-import com.github.standobyte.jojo.action.non_stand.VampirismFreeze;
+import com.github.standobyte.jojo.action.non_stand.*;
 import com.github.standobyte.jojo.action.player.ContinuousActionInstance;
 import com.github.standobyte.jojo.action.stand.CrazyDiamondRestoreTerrain;
 import com.github.standobyte.jojo.action.stand.StandEntityAction;
@@ -44,6 +38,7 @@ import com.github.standobyte.jojo.capability.entity.hamonutil.EntityHamonChargeC
 import com.github.standobyte.jojo.capability.entity.hamonutil.ProjectileHamonChargeCapProvider;
 import com.github.standobyte.jojo.enchantment.GlovesSpeedEnchantment;
 import com.github.standobyte.jojo.entity.AngeloRockEntity;
+import com.github.standobyte.jojo.entity.damaging.projectile.ownerbound.ZoomPunchEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.stands.MagiciansRedEntity;
 import com.github.standobyte.jojo.init.ModEntityTypes;
@@ -783,7 +778,58 @@ public class GameplayEventHandler {
             });
         }
     }
-    
+
+    @SubscribeEvent(priority = EventPriority.HIGH)
+    public static void blockFreezeDamage(LivingHurtEvent event){
+        DamageSource dmgSource = event.getSource();
+        LivingEntity user = event.getEntityLiving();
+        LivingEntity meleeAttacker = DamageUtil.getMeleeAttacker(dmgSource);
+        if(INonStandPower.getNonStandPowerOptional(user).map(iNonStandPower ->
+                iNonStandPower.getTypeSpecificData(ModPowers.VAMPIRISM.get())
+                        .map(VampirismData::isFreezeShield).orElse(false)).orElse(false)){
+
+            if ((meleeAttacker != null || dmgSource.getDirectEntity() instanceof ZoomPunchEntity)
+                    && DamageUtil.isShieldBlockAngle(user, dmgSource)){
+                LivingEntity dealDamageTo = (LivingEntity) dmgSource.getEntity();
+                if(dmgSource.getDirectEntity() instanceof ZoomPunchEntity){
+                    dealDamageTo = ((ZoomPunchEntity)dmgSource.getDirectEntity()).getOwner();
+                }
+                if( !(getScarlet(dealDamageTo).isPresent() && getScarlet(dealDamageTo).get().getPhase() == StandEntityAction.Phase.PERFORM)){
+                    if(!user.level.isClientSide){
+                        int difficulty = user.level.getDifficulty().getId();
+                        float damage = (float) Math.pow(2, difficulty) * 0.5f;
+                        if(DamageUtil.dealColdDamage(dealDamageTo, damage, user, null)){
+                            EffectInstance freezeInstance = dealDamageTo.getEffect(ModStatusEffects.FREEZE.get());
+                            if (freezeInstance == null) {
+                                user.level.playSound(null, dealDamageTo, ModSounds.VAMPIRE_FREEZE.get(), dealDamageTo.getSoundSource(), 1.0F, 1.0F);
+                                dealDamageTo.addEffect(new EffectInstance(ModStatusEffects.FREEZE.get(), (difficulty + 1) * 50, 0));
+                            }
+                            else {
+                                int additionalDuration = (difficulty - 1) * 5 + 1;
+                                int duration = freezeInstance.getDuration() + additionalDuration;
+                                int lvl = duration / 100;
+                                dealDamageTo.addEffect(new EffectInstance(ModStatusEffects.FREEZE.get(), duration, lvl));
+                            }
+                        }
+
+                        if(dmgSource.getMsgId().contains("hamon")){
+                            event.setCanceled(true);
+                        }
+                    }
+                    user.playSound(ModSounds.VAMPIRE_FREEZE.get(), 1.0F, 1.0F);
+                }
+            }
+        }
+    }
+
+    public static Optional<HamonSunlightYellowOverdrive.Instance> getScarlet(LivingEntity user) {
+        return ContinuousActionInstance.getCurrentAction(user)
+                .filter(action -> action.getAction() == ModHamonActions.JONATHAN_SCARLET_OVERDRIVE.get())
+                .map(action -> (HamonSunlightYellowOverdrive.Instance) action);
+    }
+
+
+
     @Nullable
     private static StandEntity getTargetStand(LivingEntity target) {
         return IStandPower.getStandPowerOptional(target).map(stand -> {

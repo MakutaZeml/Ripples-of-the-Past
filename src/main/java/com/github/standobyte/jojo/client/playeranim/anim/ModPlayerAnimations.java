@@ -40,7 +40,12 @@ public class ModPlayerAnimations {
     public static BasicToggleAnim lightFlashDecoy;
     public static BasicToggleAnim atmosphericRift;
     public static BasicToggleAnim pillarmanPossession;
+    //Custom
+    public static WindupAttackAnim jotaroOraOra;
     public static WindupAttackAnim za_warudo;
+    public static WindupAttackAnim time_stop;
+    public static WindupAttackAnim dioMudaMuda;
+    public static WindupAttackAnim josukeDoraDora;
 
     /** 
      * This string must match the full name of the class and the package it's in.<br>
@@ -184,9 +189,25 @@ public class ModPlayerAnimations {
                 new ResourceLocation(JojoMod.MOD_ID, "pillar_man_possession"), 1);
 
 
+        jotaroOraOra =PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.standuser.KosmXJotaroOraOra",
+                new ResourceLocation(JojoMod.MOD_ID, "jotaro_ora_ora"), 1,
+                WindupAttackAnim.NoPlayerAnimator::new);
         za_warudo = PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
-                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.stand_user.KosmXZaWarudo",
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.standuser.KosmXZaWarudo",
                 new ResourceLocation(JojoMod.MOD_ID, "za_warudo"), 1,
+                WindupAttackAnim.NoPlayerAnimator::new);
+        time_stop=  PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.standuser.KosmXJotaroWarudo",
+                new ResourceLocation(JojoMod.MOD_ID, "jotaro_warudo"), 1,
+                WindupAttackAnim.NoPlayerAnimator::new);
+        dioMudaMuda = PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.standuser.KosmXDioMudaMuda",
+                new ResourceLocation(JojoMod.MOD_ID, "dio_muda_muda"), 1,
+                WindupAttackAnim.NoPlayerAnimator::new);
+        josukeDoraDora=PlayerAnimationHandler.getPlayerAnimator().registerAnimLayer(
+                "com.github.standobyte.jojo.client.playeranim.anim.kosmximpl.standuser.KosmXJosukeDoraDora",
+                new ResourceLocation(JojoMod.MOD_ID, "josuke_dora_dora"), 1,
                 WindupAttackAnim.NoPlayerAnimator::new);
     }
 

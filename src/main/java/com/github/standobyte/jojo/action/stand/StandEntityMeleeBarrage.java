@@ -15,6 +15,7 @@ import com.github.standobyte.jojo.action.stand.punch.StandEntityPunch;
 import com.github.standobyte.jojo.action.stand.punch.StandMissedPunch;
 import com.github.standobyte.jojo.capability.entity.LivingUtilCapProvider;
 import com.github.standobyte.jojo.client.ClientUtil;
+import com.github.standobyte.jojo.client.playeranim.anim.ModPlayerAnimations;
 import com.github.standobyte.jojo.client.sound.ClientTickingSoundsHelper;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandEntityTask;
@@ -23,16 +24,19 @@ import com.github.standobyte.jojo.entity.stand.StandRelativeOffset;
 import com.github.standobyte.jojo.entity.stand.StandStatFormulas;
 import com.github.standobyte.jojo.init.ModSounds;
 import com.github.standobyte.jojo.init.ModStatusEffects;
+import com.github.standobyte.jojo.init.power.stand.ModStandsInit;
 import com.github.standobyte.jojo.network.PacketManager;
 import com.github.standobyte.jojo.network.packets.fromserver.TrBarrageHitSoundPacket;
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 import com.github.standobyte.jojo.power.impl.stand.StandInstance.StandPart;
+import com.github.standobyte.jojo.power.impl.stand.type.StandType;
 import com.github.standobyte.jojo.util.mc.damage.StandEntityDamageSource;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.Direction;
 import net.minecraft.util.SoundEvent;
@@ -351,5 +355,26 @@ public class StandEntityMeleeBarrage extends StandEntityAction implements IHasSt
             }
             super.afterAttack(stand, target, dmgSource, task, hurt, killed);
         }
+    }
+
+    @Override
+    public boolean clHeldStartAnim(PlayerEntity user) {
+        StandType<?> currentStand = IStandPower.getPlayerStandPower(user).getType();
+        if(currentStand == ModStandsInit.STAND_STAR_PLATINUM.getStandType()){
+            return ModPlayerAnimations.jotaroOraOra.setWindupAnim(user);
+        } else if (currentStand == ModStandsInit.STAND_THE_WORLD.getStandType()) {
+            return ModPlayerAnimations.dioMudaMuda.setWindupAnim(user);
+        } else if (currentStand == ModStandsInit.STAND_CRAZY_DIAMOND.getStandType()) {
+            return ModPlayerAnimations.josukeDoraDora.setWindupAnim(user);
+        }
+
+        return super.clHeldStartAnim(user);
+    }
+
+    @Override
+    public void clHeldStopAnim(PlayerEntity user) {
+        ModPlayerAnimations.jotaroOraOra.stopAnim(user);
+        ModPlayerAnimations.dioMudaMuda.stopAnim(user);
+        ModPlayerAnimations.josukeDoraDora.stopAnim(user);
     }
 }

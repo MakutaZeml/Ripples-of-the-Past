@@ -3,16 +3,7 @@ package com.github.standobyte.jojo.init.power.non_stand.vampirism;
 import static com.github.standobyte.jojo.init.power.ModCommonRegisters.ACTIONS;
 import static com.github.standobyte.jojo.init.power.ModCommonRegisters.NON_STAND_POWERS;
 
-import com.github.standobyte.jojo.action.non_stand.NonStandAction;
-import com.github.standobyte.jojo.action.non_stand.VampirismAction;
-import com.github.standobyte.jojo.action.non_stand.VampirismBloodDrain;
-import com.github.standobyte.jojo.action.non_stand.VampirismBloodGift;
-import com.github.standobyte.jojo.action.non_stand.VampirismClawLacerate;
-import com.github.standobyte.jojo.action.non_stand.VampirismDarkAura;
-import com.github.standobyte.jojo.action.non_stand.VampirismFreeze;
-import com.github.standobyte.jojo.action.non_stand.VampirismHamonSuicide;
-import com.github.standobyte.jojo.action.non_stand.VampirismSpaceRipperStingyEyes;
-import com.github.standobyte.jojo.action.non_stand.VampirismZombieSummon;
+import com.github.standobyte.jojo.action.non_stand.*;
 import com.github.standobyte.jojo.power.impl.nonstand.type.vampirism.VampirismPowerType;
 
 import net.minecraftforge.fml.RegistryObject;
@@ -47,6 +38,11 @@ public class ModVampirismActions {
     public static final RegistryObject<VampirismAction> VAMPIRISM_HAMON_SUICIDE = ACTIONS.register("vampirism_hamon_suicide", 
             () -> new VampirismHamonSuicide(new NonStandAction.Builder().holdToFire(100, false).ignoresPerformerStun()));
 
+    public static final RegistryObject<VampirismAction> VAMPIRISM_FREEZE_DEBUFF = ACTIONS.register("vampirism_freeze_counter",
+            () -> new VampirismRebuffFreeze(new NonStandAction.Builder().needsFreeMainHand()));
+
+    public static final RegistryObject<VampirismAction> VAMPIRISM_FREEZE_SHIELD = ACTIONS.register("vampirism_freeze_shield",
+            () -> new VampirismFreezeShield(new NonStandAction.Builder().needsFreeMainHand()));
 
 
     public static final RegistryObject<VampirismPowerType> VAMPIRISM = NON_STAND_POWERS.register("vampirism", 
@@ -59,7 +55,9 @@ public class ModVampirismActions {
                     new VampirismAction[] {
                             VAMPIRISM_BLOOD_GIFT.get(), 
                             VAMPIRISM_ZOMBIE_SUMMON.get(), 
-                            VAMPIRISM_DARK_AURA.get()},
+                            VAMPIRISM_DARK_AURA.get(),
+                            VAMPIRISM_FREEZE_SHIELD.get()
+                    },
                     
                     VAMPIRISM_BLOOD_DRAIN.get()
                     ).withColor(VampirismPowerType.COLOR));

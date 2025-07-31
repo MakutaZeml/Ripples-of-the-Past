@@ -17,6 +17,7 @@ import com.github.standobyte.jojo.capability.entity.LivingUtilCapProvider;
 import com.github.standobyte.jojo.capability.world.TimeStopHandler;
 import com.github.standobyte.jojo.capability.world.TimeStopInstance;
 import com.github.standobyte.jojo.capability.world.WorldUtilCapProvider;
+import com.github.standobyte.jojo.client.playeranim.anim.ModPlayerAnimations;
 import com.github.standobyte.jojo.entity.stand.StandEntity;
 import com.github.standobyte.jojo.entity.stand.StandPose;
 import com.github.standobyte.jojo.init.ModStatusEffects;
@@ -26,6 +27,7 @@ import com.github.standobyte.jojo.network.packets.fromserver.PlaySoundAtClientPa
 import com.github.standobyte.jojo.power.impl.stand.IStandPower;
 
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundCategory;
@@ -333,5 +335,15 @@ public class TimeStop extends StandAction {
         public Builder getThis() {
             return this;
         }
+    }
+
+    @Override
+    public boolean clHeldStartAnim(PlayerEntity user) {
+        return ModPlayerAnimations.time_stop.setWindupAnim(user);
+    }
+
+    @Override
+    public void clHeldStopAnim(PlayerEntity user) {
+        ModPlayerAnimations.time_stop.stopAnim(user);
     }
 }

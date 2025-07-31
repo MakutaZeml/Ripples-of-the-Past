@@ -1102,7 +1102,10 @@
   "action.jojo.vampirism_blood_gift": "Regalo de Sangre",
   "action.jojo.vampirism_dark_aura": "Atmósfera Maligna",
   "action.jojo.vampirism_hamon_suicide": "Usar Hamon",
-  
+  "action.jojo.vampirism_freeze_counter": "Contra ataque gélido",
+  "action.jojo.vampirism_freeze_shield": "Capa de frío protectora",
+
+
   "jojo.vampire.ready_to_cure": "Te sientes somnoliento. Tal vez dormir un poco termine esta pesadilla...",
   
   "non_stand.jojo.zombie": "Zombie",

@@ -1126,7 +1126,9 @@
   "action.jojo.vampirism_blood_gift": "Blood Gift",
   "action.jojo.vampirism_dark_aura": "Evil Atmosphere",
   "action.jojo.vampirism_hamon_suicide": "Use Hamon",
-  
+  "action.jojo.vampirism_freeze_counter": "Freeze Counter",
+  "action.jojo.vampirism_freeze_shield": "Freeze Layer Shield",
+
   "jojo.vampire.ready_to_cure": "You feel sleepy. Maybe sleeping a bit will finish this nightmare...",
   
   "non_stand.jojo.zombie": "Zombie",

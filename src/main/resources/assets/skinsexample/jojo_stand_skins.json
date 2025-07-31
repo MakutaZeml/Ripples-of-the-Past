@@ -1,0 +1,102 @@
+{
+  "_comment0": "This is where you define the path of each Stand skin in the resource pack, the Stand each one belongs to, and the UI color of each skin.",
+  "_comment1": "A resource pack can have an indefinite amount of Stand skins, and can contain skins for different Stands at the same time.",
+  "_comment2": "One of the ways to learn in-mod Stand IDs is to look through the suggestions for the '/stand give @s' command.",
+  "_comment3": "There are two ways to define a color: a string with its Hex code, or an array of its RGB values.",
+  "_comment4": "It's recommended to rename this pack's namespace (skinsexample) to something else to avoid collisions with other resource packs.",
+  "_comment5": "The _comment entries can be deleted from this file.",
+  
+  "skins": {
+    "skinsexample:sp_hftf": {
+      "stand_type": "jojo:star_platinum",
+      "color" : "0x82e890"
+    },
+    "skinsexample:sp_p4": {
+      "stand_type": "jojo:star_platinum",
+      "color" : [70, 213, 234]
+    },
+    "skinsexample:sp_p6": {
+      "stand_type": "jojo:star_platinum",
+      "color" : "#a66cdf"
+    },
+
+
+    "skinsexample:tw_eyecatch_2": {
+      "stand_type": "jojo:the_world",
+      "color" : "#7B4CDA"
+    },
+    "skinsexample:tw_hftf_alt": {
+      "stand_type": "jojo:the_world",
+      "color" : "#F7E7C6"
+    },
+    "skinsexample:tw_hftf_shadow": {
+      "stand_type": "jojo:the_world",
+      "color" : "#C8D8E8"
+    },
+
+
+    "skinsexample:hg_dp_tog": {
+      "stand_type": "jojo:hierophant_green",
+      "color" : "#DEDA6F"
+    },
+    "skinsexample:hg_hftf_new": {
+      "stand_type": "jojo:hierophant_green",
+      "color" : "#10D663"
+    },
+    "skinsexample:hg_hftf_alt2": {
+      "stand_type": "jojo:hierophant_green",
+      "color" : "#FF7F21"
+    },
+
+
+    "skinsexample:sc_appp": {
+      "stand_type": "jojo:silver_chariot",
+      "color" : "#EDD51C"
+    },
+    "skinsexample:sc_hftf_alt": {
+      "stand_type": "jojo:silver_chariot",
+      "color" : "#F6E6CB"
+    },
+    "skinsexample:sc_jojonium": {
+      "stand_type": "jojo:silver_chariot",
+      "color" : "#5A3C69"
+    },
+
+
+    "skinsexample:mr_dp_hongkong": {
+      "stand_type": "jojo:magicians_red",
+      "color" : "#A346F5"
+    },
+    "skinsexample:mr_hftf_alt": {
+      "stand_type": "jojo:magicians_red",
+      "color" : "#ED8F5F"
+    },
+
+
+    "skinsexample:cd_gw_cover": {
+      "stand_type": "jojo:crazy_diamond",
+      "color" : "#FFEDDA"
+    },
+    "skinsexample:cd_ichibankuji": {
+      "stand_type": "jojo:crazy_diamond",
+      "color" : "#3978AE"
+    },
+
+    
+    "skinsexample:cd_netherite": {
+      "stand_type": "jojo:crazy_diamond",
+      "color" : "#59575A"
+    },
+
+    "skinsexample:kq_macabre": {
+      "stand_type": "rotp_zkq:killer_queen",
+      "color": "0x190522"
+
+    },
+    "skinsexample:hp_better": {
+      "stand_type": "rotp_zhp:hermito_purple",
+      "color": "0xF070D0"
+
+    }
+  }
+}

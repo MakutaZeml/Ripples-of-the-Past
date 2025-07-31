@@ -12,6 +12,7 @@ import com.github.standobyte.jojo.init.power.JojoCustomRegistries;
 import com.github.standobyte.jojo.init.power.non_stand.ModPowers;
 import com.github.standobyte.jojo.init.power.non_stand.vampirism.ModVampirismActions;
 import com.github.standobyte.jojo.network.PacketManager;
+import com.github.standobyte.jojo.network.packets.fromserver.TrFreezeShieldPacket;
 import com.github.standobyte.jojo.network.packets.fromserver.TrVampirismDataPacket;
 import com.github.standobyte.jojo.power.impl.nonstand.INonStandPower;
 import com.github.standobyte.jojo.power.impl.nonstand.TypeSpecificData;
@@ -45,7 +46,7 @@ public class VampirismData extends TypeSpecificData {
     private boolean vampireHamonUser = false;
     private float hamonStrengthLevel;
     private Optional<CharacterHamonTechnique> hamonTechnique = Optional.empty();
-
+    private boolean freezeShield = false;
     @Override
     public void onPowerGiven(NonStandPowerType<?> oldType, TypeSpecificData oldData) {
         LivingEntity user = power.getUser();
@@ -240,7 +241,22 @@ public class VampirismData extends TypeSpecificData {
     private static int getMaxCuringTicks(LivingEntity entity) {
         return JojoModConfig.getCommonConfigInstance(entity.level.isClientSide()).vampirismCuringDuration.get();
     }
-    
+
+    public void triggerFreezeShield(){
+        this.setFreezeShield(!this.freezeShield);
+    }
+
+    public boolean isFreezeShield() {
+        return this.freezeShield;
+    }
+
+    public void setFreezeShield(boolean freezeShield) {
+        this.freezeShield = freezeShield;
+        if(power.getUser() instanceof ServerPlayerEntity){
+            PacketManager.sendToClient( new TrFreezeShieldPacket(power.getUser().getId(),this.freezeShield),(ServerPlayerEntity) power.getUser());
+        }
+    }
+
     @Override
     public CompoundNBT writeNBT() {
         CompoundNBT nbt = new CompoundNBT();
@@ -258,6 +274,7 @@ public class VampirismData extends TypeSpecificData {
                 }
             }
         }
+        nbt.putBoolean("FreezeShield",this.freezeShield);
         return nbt;
     }
     
@@ -269,11 +286,13 @@ public class VampirismData extends TypeSpecificData {
         this.vampireHamonUser = nbt.getBoolean("VampireHamonUser");
         this.hamonStrengthLevel = nbt.getFloat("HamonStrength");
         this.hamonTechnique.ifPresent(character -> nbt.putString("HamonTechnique", character.getRegistryName().toString()));
+        this.freezeShield = nbt.getBoolean("FreezeShield");
     }
     
     @Override
     public void syncWithUserOnly(ServerPlayerEntity user) {
         lastBloodLevel = -999;
+        this.freezeShield = false;
     }
     
     public boolean refreshBloodLevel(int bloodLevel) {
@@ -284,6 +303,7 @@ public class VampirismData extends TypeSpecificData {
     
     @Override
     public void syncWithTrackingOrUser(LivingEntity user, ServerPlayerEntity entity) {
+        PacketManager.sendToClient( new TrFreezeShieldPacket(user.getId(),this.freezeShield),entity);
         PacketManager.sendToClient(TrVampirismDataPacket.wasHamonUser(
                 user.getId(), vampireHamonUser), entity);
         PacketManager.sendToClient(TrVampirismDataPacket.atFullPower(
