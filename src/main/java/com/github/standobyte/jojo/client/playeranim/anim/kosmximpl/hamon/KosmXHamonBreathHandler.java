@@ -62,23 +62,23 @@ public class KosmXHamonBreathHandler extends AnimLayerHandler<ModifierLayer<IAni
     private static final Map<CharacterHamonTechnique, ResourceLocation[]> POSES = Util.make(new HashMap<>(), map -> {
         map.put(ModHamonSkills.CHARACTER_JONATHAN.get(), new ResourceLocation[] {
                 DEFAULT_POSE,
-//                new ResourceLocation(JojoMod.MOD_ID, "breath_jonathan"),
+                new ResourceLocation(JojoMod.MOD_ID, "breath_jonathan"),
         });
         map.put(ModHamonSkills.CHARACTER_ZEPPELI.get(), new ResourceLocation[] {
                 DEFAULT_POSE,
-//                new ResourceLocation(JojoMod.MOD_ID, "breath_zeppeli"),
+                new ResourceLocation(JojoMod.MOD_ID, "breath_zeppeli"),
         });
         map.put(ModHamonSkills.CHARACTER_JOSEPH.get(), new ResourceLocation[] {
                 DEFAULT_POSE,
-//                new ResourceLocation(JojoMod.MOD_ID, "breath_joseph"),
+                new ResourceLocation(JojoMod.MOD_ID, "breath_joseph"),
         });
         map.put(ModHamonSkills.CHARACTER_CAESAR.get(), new ResourceLocation[] {
                 DEFAULT_POSE,
-//                new ResourceLocation(JojoMod.MOD_ID, "breath_caesar"),
+                new ResourceLocation(JojoMod.MOD_ID, "breath_caesar"),
         });
         map.put(ModHamonSkills.CHARACTER_LISA_LISA.get(), new ResourceLocation[] {
                 DEFAULT_POSE,
-//                new ResourceLocation(JojoMod.MOD_ID, "breath_lisa_lisa"),
+                new ResourceLocation(JojoMod.MOD_ID, "breath_lisa_lisa"),
         });
     });
     
